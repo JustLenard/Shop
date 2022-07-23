@@ -1,8 +1,8 @@
 import { ProductPage, Home } from '../pages'
 
 export const routes = {
-	home: '/',
-	productPage: '/product',
+	home: '/home',
+	productPage: '/',
 }
 
 export const routeElements = [
