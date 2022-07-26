@@ -7,7 +7,6 @@ const App: React.FC<Props> = () => {
 	return (
 		<>
 			<AppRoutes />
-			<div>the h eck</div>
 		</>
 	)
 }
