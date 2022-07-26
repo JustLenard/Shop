@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavbarContainer } from './Navbar.style'
-// import styled from 'styled-components'
+
+import styled from 'styled-components'
 
 // const NavbarContainer = styled.nav`
 // 	display: flex;
