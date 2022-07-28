@@ -1,13 +1,7 @@
 import React from 'react'
-import { NavbarContainer } from './f'
-// import NavbarContainer from './Navbar.style'
+import { NavbarContainer } from './Style'
 
 import styled from 'styled-components'
-
-// const NavbarContainer = styled.nav`
-// 	display: flex;
-// 	justify-content: space-between;
-// `
 
 interface Props {}
 
