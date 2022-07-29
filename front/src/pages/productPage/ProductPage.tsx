@@ -1,13 +1,17 @@
 import React from 'react'
 import { ProductCard } from '../../components/cards'
+import { MainContainer } from '../../components/layout/containers'
 
 interface Props {}
 
 const ProductPage: React.FC<Props> = () => {
 	return (
-		<div>
+		<MainContainer>
 			<ProductCard />
-		</div>
+			<ProductCard />
+			<ProductCard />
+			<ProductCard />
+		</MainContainer>
 	)
 }
 
