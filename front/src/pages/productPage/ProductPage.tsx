@@ -8,13 +8,19 @@ import {
 interface Props {}
 
 const ProductPage: React.FC<Props> = () => {
+  const products = {
+    title: 'Product Title',
+    price: 100,
+    currency: 'USD',
+  }
+
   return (
     <MainContainer>
       <FlexContainer>
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
-        <ProductCard />
+        <ProductCard {...products} />
+        <ProductCard {...products} />
+        <ProductCard {...products} />
+        <ProductCard {...products} />
       </FlexContainer>
     </MainContainer>
   )
