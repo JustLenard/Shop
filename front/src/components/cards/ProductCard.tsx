@@ -1,29 +1,6 @@
 import React from 'react'
-import styled from 'styled-components'
-// import { animeGirl } from '../../assets/images/animeGirl.jpeg'
-// import animeGirl from '../../assets/images/animeGirl.jpeg'
-import animeGirl from './animeGirl.jpeg'
-
-const CardBody = styled.div`
-  width: 300px;
-  height: 300px;
-  background-color: #fff;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-`
-
-const ImageWrapper = styled.div`
-  width: 100%;
-  height: 80%;
-  /* flex: 1  */
-  img {
-    width: 100%;
-    height: 100%;
-
-    object-fit: cover;
-  }
-`
+import animeGirl from '../../assets/images/animeGirl.jpeg'
+import * as S from './style/ProductCard.style'
 
 interface Props {
   image?: string
@@ -39,16 +16,16 @@ const ProductCard: React.FC<Props> = ({
   price,
 }: Props) => {
   return (
-    <CardBody>
-      <ImageWrapper>
-        <img src={animeGirl}></img>
-      </ImageWrapper>
-      <div>{title}</div>
-      <div>
+    <S.CardBody>
+      <S.ImageWrapper>
+        <img src={image || animeGirl}></img>
+      </S.ImageWrapper>
+      <S.Title>{title}</S.Title>
+      <S.Price>
         {currency}
         {price}
-      </div>
-    </CardBody>
+      </S.Price>
+    </S.CardBody>
   )
 }
 
