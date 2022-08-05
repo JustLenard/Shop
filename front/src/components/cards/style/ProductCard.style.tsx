@@ -7,6 +7,12 @@ export const CardBody = styled.div`
   padding: 1rem;
   display: flex;
   flex-direction: column;
+  cursor: pointer;
+
+  :hover {
+    scale: 1.2;
+    /* background-color: red; */
+  }
 `
 
 export const ImageWrapper = styled.div`
