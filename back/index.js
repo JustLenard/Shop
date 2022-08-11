@@ -1,25 +1,22 @@
-const { ApolloServer } = require("apollo-server-express");
+const { ApolloServer } = require('apollo-server-express')
 
-const { typeDefs } = require("./schema/typeDefs");
-const { resolvers } = require("./schema/resolvers");
+const { typeDefs } = require('./schema/typeDefs')
+const { resolvers } = require('./schema/resolvers')
 
-const express = require("express");
+const express = require('express')
 
 async function startServer() {
-  const server = new ApolloServer({ typeDefs, resolvers });
-  await server.start();
+    const server = new ApolloServer({ typeDefs, resolvers })
+    await server.start()
 
-  server.applyMiddleware({ app });
+    server.applyMiddleware({ app })
 }
 
-// IT WOOOOks . I also logged in
-// Now it works?
+startServer()
 
-startServer();
-
-const app = express();
+const app = express()
 
 app.listen({ port: 3001 }, () => {
-  console.log(`🚀 Server ready at http://localhost:3001`);
-});
+    console.log(`🚀 Server ready at http://localhost:3001`)
+})
 // console.log(`🚀 Server ready at http://localhost:3001${server.graphqlPath}`);

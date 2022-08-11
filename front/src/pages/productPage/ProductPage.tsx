@@ -1,18 +1,18 @@
-import React from 'react'
-import { ProductCard } from '../../components/cards'
+import React from "react";
+import { ProductCard } from "../../components/cards";
 import {
   MainContainer,
   FlexContainer,
-} from '../../components/layout/containers'
+} from "../../components/layout/containers";
 
 interface Props {}
 
 const ProductPage: React.FC<Props> = () => {
   const products = {
-    title: 'Product Title',
+    title: "Product Title",
     price: 100,
-    currency: 'USD',
-  }
+    currency: "USD",
+  };
 
   return (
     <MainContainer>
@@ -23,7 +23,7 @@ const ProductPage: React.FC<Props> = () => {
         <ProductCard {...products} />
       </FlexContainer>
     </MainContainer>
-  )
-}
+  );
+};
 
-export default ProductPage
+export default ProductPage;
