@@ -3,6 +3,8 @@
 # dependencies
 /front/node_modules
 /back/node_modules
+back/node_modules
+front/node_modules
 /.pnp
 .pnp.js
 
@@ -18,6 +20,7 @@
 .env.development.local
 .env.test.local
 /back/.env
+back/.env
 .env.production.local
 .gitignore
 
