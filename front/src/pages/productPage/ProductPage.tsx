@@ -1,29 +1,37 @@
-import React from "react";
-import { ProductCard } from "../../components/cards";
+import React from 'react'
+import { ProductCard } from '../../components/cards'
+import CartItemCard from '../../components/cards/CartItemCard'
 import {
-  MainContainer,
-  FlexContainer,
-} from "../../components/layout/containers";
+    MainContainer,
+    FlexContainer,
+} from '../../components/layout/containers'
 
 interface Props {}
 
 const ProductPage: React.FC<Props> = () => {
-  const products = {
-    title: "Product Title",
-    price: 100,
-    currency: "USD",
-  };
+    const products = {
+        title: 'Product Title',
+        price: 100,
+        currency: 'USD',
+    }
 
-  return (
-    <MainContainer>
-      <FlexContainer>
-        <ProductCard {...products} />
-        <ProductCard {...products} />
-        <ProductCard {...products} />
-        <ProductCard {...products} />
-      </FlexContainer>
-    </MainContainer>
-  );
-};
+    let product = {
+        name: 'Product Name',
+        price: 100,
+        // productName: null,
+    }
 
-export default ProductPage;
+    return (
+        <MainContainer>
+            <FlexContainer>
+                <ProductCard {...products} />
+                <ProductCard {...products} />
+                <ProductCard {...products} />
+                <ProductCard {...products} />
+            </FlexContainer>
+            <CartItemCard {...product} />
+        </MainContainer>
+    )
+}
+
+export default ProductPage

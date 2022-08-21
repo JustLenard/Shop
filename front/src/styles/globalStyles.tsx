@@ -1,5 +1,4 @@
 import { createGlobalStyle } from 'styled-components'
-import styled from 'styled-components'
 
 export const GlobalStyle = createGlobalStyle`
    *{
@@ -9,10 +8,19 @@ export const GlobalStyle = createGlobalStyle`
        box-sizing:border-box;
        font-family: 'Open Sans', sans-serif; 
    }
+
+   img{
+    width: 100%;
+    height: 100%;
+
+   }
+
    #root{
        margin:0 auto;
+
+
+       --grayBorder: #E5E5E5
+
+       
    }
-`
-export const fuck = styled.div`
-	display: flex;
 `
