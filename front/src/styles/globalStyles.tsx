@@ -7,6 +7,8 @@ export const GlobalStyle = createGlobalStyle`
        outline:0;
        box-sizing:border-box;
        font-family: 'Open Sans', sans-serif; 
+
+
    }
 
    img{
@@ -19,7 +21,10 @@ export const GlobalStyle = createGlobalStyle`
        margin:0 auto;
 
 
-       --grayBorder: #E5E5E5
+       --grayBorder: #E5E5E5;
+       /* --grayBorder: red; */
+       --white: #fff;
+       --black: #000000;
 
        
    }

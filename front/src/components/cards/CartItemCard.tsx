@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import * as S from './styles/CartItemCard.styles'
 import animeGirl from '../../assets/images/animeGirl.jpeg'
+import Customization from './Customization'
 
 interface Props {
     // product?: {
@@ -29,6 +30,10 @@ const CartItemCard: React.FC<Props> = ({ image, name, price }) => {
             <S.Content>
                 <S.ProductName>{name}</S.ProductName>
                 <S.Price>{price}</S.Price>
+                <Customization
+                    name={'Size'}
+                    sizes={[{ size: 'xl' }, { size: 'sm' }]}
+                />
             </S.Content>
             <S.PlusMinusContainer>
                 <S.PlusMinus onClick={incereaseAmount}>+</S.PlusMinus>

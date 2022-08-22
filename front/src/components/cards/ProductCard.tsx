@@ -18,7 +18,7 @@ const ProductCard: React.FC<Props> = ({
     return (
         <S.CardBody>
             <S.ImageWrapper>
-                <img src={image || animeGirl}></img>
+                <img src={image || animeGirl} alt="product" />
             </S.ImageWrapper>
             <S.Title>{title}</S.Title>
             <S.Price>
