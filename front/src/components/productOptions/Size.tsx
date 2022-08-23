@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import * as S from './styles/Customization.styles'
+import * as S from './styles/Size.styles'
 
 interface Props {
     name: string
@@ -8,7 +8,7 @@ interface Props {
     }[]
 }
 
-const Customization: React.FC<Props> = ({ sizes }) => {
+const Size: React.FC<Props> = ({ sizes }) => {
     const [selected, setSelected] = useState(0)
 
     const handleClick = (size: { size: String }, index: number) => {
@@ -16,22 +16,22 @@ const Customization: React.FC<Props> = ({ sizes }) => {
     }
 
     return (
-        <div>
+        <S.Container>
             <S.OptionName>SIZE:</S.OptionName>
 
-            <S.SquareContainer>
+            <S.Wrapper>
                 {sizes.map((size, index) => (
-                    <S.Square
+                    <S.SizeContainer
                         key={index}
                         highlight={index === selected}
                         onClick={() => handleClick(size, index)}
                     >
                         {size.size}
-                    </S.Square>
+                    </S.SizeContainer>
                 ))}
-            </S.SquareContainer>
-        </div>
+            </S.Wrapper>
+        </S.Container>
     )
 }
 
-export default Customization
+export default Size

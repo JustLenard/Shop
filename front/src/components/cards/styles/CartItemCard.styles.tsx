@@ -1,7 +1,10 @@
 import styled from 'styled-components'
+import { size } from '../../../utils/breakpoints'
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     /* border: 2px solid black; */
 
@@ -9,6 +12,13 @@ export const Container = styled.div`
 
     border-bottom: 1px solid var(--grayBorder);
     border-top: 1px solid var(--grayBorder);
+
+    /* @ {size.md}{
+        flex-direction: row;
+    } */
+    @media ${size.sm} {
+        flex-direction: row;
+    }
 `
 
 export const Content = styled.div`
@@ -29,9 +39,13 @@ export const Price = styled.div``
 
 export const PlusMinusContainer = styled.div`
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: space-between;
+
+    @media ${size.sm} {
+        flex-direction: column;
+    }
 `
 
 export const PlusMinus = styled.div`
@@ -47,11 +61,15 @@ export const PlusMinus = styled.div`
 
 export const ImageWrapper = styled.div`
     flex-grow: 0.2;
-    width: 20px;
+    /* min-width: 20px; */
+    /* max-width: 50%; */
+    border: 2px solid red;
+    /* width: 100px; */
 
     img {
-        /* object-fit: cover; */
-        /* width: 100%; */
+        object-fit: cover;
+        /* width: 100%;
+        height: 100%; */
         /* object-fit: fit; */
     }
 `
