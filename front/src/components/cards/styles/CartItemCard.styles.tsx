@@ -6,16 +6,11 @@ export const Container = styled.div`
     flex-direction: column;
     gap: 1rem;
 
-    /* border: 2px solid black; */
-
     padding: 0.5rem 0;
 
     border-bottom: 1px solid var(--grayBorder);
     border-top: 1px solid var(--grayBorder);
 
-    /* @ {size.md}{
-        flex-direction: row;
-    } */
     @media ${size.sm} {
         flex-direction: row;
     }
@@ -23,8 +18,6 @@ export const Container = styled.div`
 
 export const Content = styled.div`
     flex-grow: 0.8;
-
-    /* border: 2px solid red; */
 `
 
 export const ProductName = styled.h2`
@@ -61,15 +54,12 @@ export const PlusMinus = styled.div`
 
 export const ImageWrapper = styled.div`
     flex-grow: 0.2;
-    /* min-width: 20px; */
-    /* max-width: 50%; */
-    border: 2px solid red;
-    /* width: 100px; */
 
     img {
         object-fit: cover;
-        /* width: 100%;
-        height: 100%; */
-        /* object-fit: fit; */
+    }
+
+    @media ${size.sm} {
+        width: 150px;
     }
 `
