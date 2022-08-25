@@ -1,4 +1,5 @@
 import React from 'react'
+import { Button } from '../../components/buttons'
 import { ProductCard } from '../../components/cards'
 import CartItemCard from '../../components/cards/CartItemCard'
 import {
@@ -30,6 +31,7 @@ const ProductPage: React.FC<Props> = () => {
                 <ProductCard {...products} />
             </FlexContainer>
             <CartItemCard {...product} />
+            <Button text={'Orders'} />
         </MainContainer>
     )
 }
