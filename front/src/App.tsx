@@ -1,6 +1,6 @@
 import React from 'react'
 import AppRoutes from './routing/AppRoutes'
-import { GlobalStyle } from './styles/globalStyles'
+import { GlobalStyle } from './styles/globalStyles.styels'
 import {
     ApolloClient,
     ApolloProvider,

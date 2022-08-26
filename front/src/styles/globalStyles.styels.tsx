@@ -8,7 +8,6 @@ export const GlobalStyle = createGlobalStyle`
        box-sizing:border-box;
        font-family: 'Open Sans', sans-serif; 
 
-
    }
 
    img{
@@ -22,10 +21,9 @@ export const GlobalStyle = createGlobalStyle`
 
 
        --grayBorder: #E5E5E5;
-       /* --grayBorder: red; */
        --white: #fff;
        --black: #000000;
-
+       --green: #5ECE7B;
        
    }
 `

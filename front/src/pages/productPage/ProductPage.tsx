@@ -19,7 +19,6 @@ const ProductPage: React.FC<Props> = () => {
     let product = {
         name: 'Product Name',
         price: 100,
-        // productName: null,
     }
 
     return (
@@ -31,9 +30,9 @@ const ProductPage: React.FC<Props> = () => {
                 <ProductCard {...products} />
             </FlexContainer>
             <CartItemCard {...product} />
-            <Button text={'Orders'} />
+            <Button text={'Orders'} color={'green'} />
+            <Button text={'White Button'} color={'white'} />
         </MainContainer>
     )
 }
-
 export default ProductPage
