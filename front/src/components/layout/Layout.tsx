@@ -1,16 +1,16 @@
 import React from 'react'
 import Navbar from './Navbar'
+import { MainContainer } from './styles/Containers'
 
 interface Props {
     children: React.ReactNode
 }
 
 const Layout: React.FC<Props> = (props) => {
-    // console.log(props)
     return (
         <>
             <Navbar />
-            <div>{props.children}</div>
+            <MainContainer>{props.children}</MainContainer>
         </>
     )
 }

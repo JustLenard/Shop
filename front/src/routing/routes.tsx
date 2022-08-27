@@ -1,19 +1,19 @@
-import { ProductPage, Home } from '../pages'
+import { ProductPage, SingleProductPage } from '../pages'
 
 export const routes = {
-	home: '/home',
-	productPage: '/',
+    singleProductPage: '/product',
+    productPage: '/',
 }
 
 export const routeElements = [
-	{
-		path: routes.home,
-		exact: true,
-		element: <Home />,
-	},
-	{
-		path: routes.productPage,
-		exact: true,
-		element: <ProductPage />,
-	},
+    {
+        path: routes.singleProductPage,
+        exact: true,
+        element: <SingleProductPage />,
+    },
+    {
+        path: routes.productPage,
+        exact: true,
+        element: <ProductPage />,
+    },
 ]

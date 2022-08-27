@@ -2,10 +2,7 @@ import React from 'react'
 import { Button } from '../../components/buttons'
 import { ProductCard } from '../../components/cards'
 import CartItemCard from '../../components/cards/CartItemCard'
-import {
-    MainContainer,
-    FlexContainer,
-} from '../../components/layout/containers'
+import { FlexContainer } from '../../components/layout/styles/Containers'
 
 interface Props {}
 
@@ -22,7 +19,7 @@ const ProductPage: React.FC<Props> = () => {
     }
 
     return (
-        <MainContainer>
+        <>
             <FlexContainer>
                 <ProductCard {...products} />
                 <ProductCard {...products} />
@@ -32,7 +29,7 @@ const ProductPage: React.FC<Props> = () => {
             <CartItemCard {...product} />
             <Button text={'Orders'} color={'green'} />
             <Button text={'White Button'} color={'white'} />
-        </MainContainer>
+        </>
     )
 }
 export default ProductPage
