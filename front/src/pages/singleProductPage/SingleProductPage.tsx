@@ -5,19 +5,23 @@ import animeGirl from '../../assets/images/animeGirl.jpeg'
 interface Props {}
 
 const SingleProductPage: React.FC<Props> = () => {
+    const handleClick = () => {
+        console.log('f')
+    }
+
     return (
         <S.MainContainer>
             <S.ImagesContainer>
                 <S.SmallImages>
-                    <img src={animeGirl} alt="product" />
+                    <img onClick={handleClick} src={animeGirl} alt="product" />
                     <img src={animeGirl} alt="product" />
                     <img src={animeGirl} alt="product" />
                 </S.SmallImages>
-                <S.BigImage>
+                <S.BigImageWrapper>
                     <img src={animeGirl} alt="product" />
-                </S.BigImage>
+                </S.BigImageWrapper>
             </S.ImagesContainer>
-            <S.ProductInfo></S.ProductInfo>
+            <S.ProductInfo>f</S.ProductInfo>
         </S.MainContainer>
     )
 }
