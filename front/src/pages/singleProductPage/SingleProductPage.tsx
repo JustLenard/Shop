@@ -10,19 +10,30 @@ const SingleProductPage: React.FC<Props> = () => {
     }
 
     return (
-        <S.MainContainer>
-            <S.ImagesContainer>
-                <S.SmallImages>
-                    <img onClick={handleClick} src={animeGirl} alt="product" />
-                    <img src={animeGirl} alt="product" />
-                    <img src={animeGirl} alt="product" />
-                </S.SmallImages>
-                <S.BigImageWrapper>
-                    <img src={animeGirl} alt="product" />
-                </S.BigImageWrapper>
-            </S.ImagesContainer>
-            <S.ProductInfo>f</S.ProductInfo>
-        </S.MainContainer>
+        <>
+            <S.MainContainer>
+                <S.ImagesContainer>
+                    <S.SmallImages>
+                        <img
+                            onClick={handleClick}
+                            src={animeGirl}
+                            alt="product"
+                        />
+                        <img src={animeGirl} alt="product" />
+                        <img src={animeGirl} alt="product" />
+                    </S.SmallImages>
+                    <S.BigImageWrapper>
+                        <img src={animeGirl} alt="product" />
+                    </S.BigImageWrapper>
+                </S.ImagesContainer>
+                <S.ProductInfo>f</S.ProductInfo>
+            </S.MainContainer>
+            <S.Flex>
+                <div>fuck</div>
+                <div>fuck</div>
+                <div>fuck</div>
+            </S.Flex>
+        </>
     )
 }
 

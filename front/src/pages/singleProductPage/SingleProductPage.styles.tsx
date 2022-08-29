@@ -2,14 +2,19 @@ import styled from 'styled-components'
 
 export const MainContainer = styled.div`
     display: flex;
+    /* width: 100%; */
+
+    border: 2px solid red;
 `
 
 export const ImagesContainer = styled.div`
     display: flex;
     /* flex-grow: 50%; */
-    flex: 0 0 50;
+    /* flex: 0 0 50; */
+    /* flex-grow: 50; */
+    width: 60%;
 
-    border: 2px solid purple;
+    border: 5px solid purple;
 `
 
 export const SmallImages = styled.div`
@@ -25,18 +30,32 @@ export const SmallImages = styled.div`
 `
 
 export const BigImageWrapper = styled.div`
+    /* width: 100%; */
     border: 2px solid red;
 
+    max-width: 600px;
+    max-height: 600px;
+    margin: 0 auto;
+
     img {
-        width: 200px;
-        height: 200px;
+        /* width: 200px;
+        height: 200px; */
+        /* width: 100%;
+        height: 100%; */
         object-fit: cover;
     }
 `
 
 export const ProductInfo = styled.div`
-    /* flex-grow: 50%; */
-    flex: 0 0 50;
+    /* flex-grow: 50; */
+    /* flex: 0 0 50; */
+    width: 40%;
 
     border: 2px solid green;
+`
+
+export const Flex = styled.div`
+    border: 2px solid green;
+
+    display: flex;
 `
