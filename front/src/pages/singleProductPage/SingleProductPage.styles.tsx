@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+export { ProductName } from '../../components/cards/styles/CartItemCard.styles'
 
 export const MainContainer = styled.div`
     display: flex;
