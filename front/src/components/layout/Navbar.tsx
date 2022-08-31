@@ -1,4 +1,5 @@
 import React from 'react'
+import { MoneyDropdown } from '../dropdowns'
 import { NavbarContainer, Cell } from './styles/Navbar.styles'
 
 interface Props {}
@@ -13,7 +14,8 @@ const Navbar: React.FC<Props> = () => {
             </Cell>
             <Cell>Logo</Cell>
             <Cell>
-                <div>money</div>
+                {/* <div>money</div> */}
+                <MoneyDropdown />
                 <div>cart</div>
             </Cell>
         </NavbarContainer>

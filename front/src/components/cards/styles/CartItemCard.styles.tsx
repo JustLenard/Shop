@@ -28,6 +28,7 @@ export const ProductName = styled.h2`
 
     padding-bottom: 0.5rem;
 `
+
 export const Price = styled.div``
 
 export const PlusMinusContainer = styled.div`
