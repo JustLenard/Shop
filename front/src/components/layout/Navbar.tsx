@@ -14,7 +14,6 @@ const Navbar: React.FC<Props> = () => {
             </Cell>
             <Cell>Logo</Cell>
             <Cell>
-                {/* <div>money</div> */}
                 <MoneyDropdown />
                 <div>cart</div>
             </Cell>

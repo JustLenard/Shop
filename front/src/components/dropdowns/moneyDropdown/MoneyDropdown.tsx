@@ -1,28 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './MoneyDropdown.styles'
 
 interface Props {}
 
+const money = [
+    {
+        currency: '$',
+        name: 'USD',
+    },
+    {
+        currency: 'Eur',
+        name: 'euro',
+    },
+]
+
 const MoneyDropdown: React.FC<Props> = () => {
-    const money = [
-        {
-            currency: '$',
-            name: 'USD',
-        },
-        {
-            currency: 'Eur',
-            name: 'euro',
-        },
-    ]
+    const [currentSelect, setCurrentSelect] = useState('dollas')
+
+    const selectItem = (e: React.ChangeEvent<HTMLSelectElement>) => {
+        setCurrentSelect(e.target.value)
+    }
+
+    console.log('This is currentSelect', currentSelect)
+
     return (
-        // <S.Wrapper>
-        //     <S.CurrentCurrency></S.CurrentCurrency>
-        //     <S.Dropdown></S.Dropdown>
-        // </S.Wrapper>
-        <select>
-            {/* <option>Fuck</option> */}
+        <select value={currentSelect} onChange={(e) => selectItem(e)}>
             {money.map((item, index) => (
-                <option>
+                <option key={index} value={item.currency}>
                     {item.currency}
                     {item.name}
                 </option>

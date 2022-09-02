@@ -26,7 +26,6 @@ const App: React.FC<Props> = () => {
     if (data) {
         console.log(data)
     }
-    console.log('hey')
 
     return (
         <>
