@@ -24,14 +24,14 @@ const MoneyDropdown: React.FC<Props> = () => {
     console.log('This is currentSelect', currentSelect)
 
     return (
-        <select value={currentSelect} onChange={(e) => selectItem(e)}>
+        <S.Select value={currentSelect} onChange={(e) => selectItem(e)}>
             {money.map((item, index) => (
-                <option key={index} value={item.currency}>
+                <S.Option key={index} value={item.currency}>
                     {item.currency}
                     {item.name}
-                </option>
+                </S.Option>
             ))}
-        </select>
+        </S.Select>
     )
 }
 

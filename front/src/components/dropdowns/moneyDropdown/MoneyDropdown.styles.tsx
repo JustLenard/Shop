@@ -1,6 +1,5 @@
 import styled from 'styled-components'
 
-export const Wrapper = styled.div``
+export const Select = styled.select``
 
-export const CurrentCurrency = styled.div``
-export const Dropdown = styled.div``
+export const Option = styled.option``
