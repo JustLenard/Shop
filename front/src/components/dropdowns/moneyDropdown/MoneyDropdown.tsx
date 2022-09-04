@@ -21,8 +21,6 @@ const MoneyDropdown: React.FC<Props> = () => {
         setCurrentSelect(e.target.value)
     }
 
-    console.log('This is currentSelect', currentSelect)
-
     return (
         <S.Select value={currentSelect} onChange={(e) => selectItem(e)}>
             {money.map((item, index) => (
