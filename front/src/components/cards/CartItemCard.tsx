@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import * as S from './styles/CartItemCard.styles'
 import animeGirl from '../../assets/images/animeGirl.jpeg'
 import { Size, Color } from '../productOptions/'
+import { ReactComponent as Cart } from './cart.svg'
 
 interface Props {
     // product?: {
