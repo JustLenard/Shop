@@ -26,7 +26,7 @@ export const ProductName = styled.h2`
     font-weight: 400;
     line-height: 27px;
 
-    padding-bottom: 0.5rem;
+    padding-bottom: 1rem;
 `
 
 export const Price = styled.div``

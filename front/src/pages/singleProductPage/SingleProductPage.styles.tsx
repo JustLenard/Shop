@@ -53,10 +53,16 @@ export const ProductInfo = styled.div`
     width: 40%;
 
     border: 2px solid green;
+
+    padding: 2rem;
 `
 
 export const Flex = styled.div`
     border: 2px solid green;
 
     display: flex;
+`
+
+export const Description = styled.p`
+    margin-top: 1rem;
 `
