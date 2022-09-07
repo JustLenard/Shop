@@ -11,13 +11,29 @@ export const GreenButton = styled(Button)`
     background-color: var(--green);
     color: var(--white);
 
+    transition: 0.2s linear;
+    cursor: pointer;
+
     /* Because there is no height/width, the white button with border
     is bigger the green one without, hence this. Don't know if
     there is a better way of doing this */
     padding: 17px 33px;
+
+    :hover {
+        scale: 1.1;
+        filter: brightness(0.8);
+    }
 `
 
 export const WhiteButton = styled(Button)`
     border: 1px solid black;
     background-color: var(--white);
+
+    transition: 0.2s linear;
+    cursor: pointer;
+
+    :hover {
+        scale: 1.1;
+        filter: brightness(0.8);
+    }
 `
