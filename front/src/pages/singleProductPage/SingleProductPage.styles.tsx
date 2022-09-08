@@ -1,26 +1,22 @@
+import { size } from '../../utils/breakpoints'
 import styled from 'styled-components'
 export { ProductName } from '../../components/cards/styles/CartItemCard.styles'
 
 export const MainContainer = styled.div`
-    display: flex;
-    /* width: 100%; */
-
-    border: 2px solid red;
+    @media ${size.md} {
+        display: flex;
+    }
 `
 
 export const ImagesContainer = styled.div`
-    display: flex;
-    /* flex-grow: 50%; */
-    /* flex: 0 0 50; */
-    /* flex-grow: 50; */
-    width: 60%;
-
-    border: 5px solid purple;
+    @media ${size.md} {
+        display: flex;
+        width: 60%;
+    }
 `
 
 export const SmallImages = styled.div`
     display: flex;
-    flex-direction: column;
     gap: 3rem;
 
     img {
@@ -28,38 +24,35 @@ export const SmallImages = styled.div`
         width: 150px;
         height: 150px;
     }
+
+    @media ${size.md} {
+        padding: 1rem;
+        flex-direction: column;
+    }
 `
 
 export const BigImageWrapper = styled.div`
-    /* width: 100%; */
-    border: 2px solid red;
-
     max-width: 600px;
     max-height: 600px;
-    margin: 0 auto;
+    margin: 1rem auto;
 
     img {
-        /* width: 200px;
-        height: 200px; */
-        /* width: 100%;
-        height: 100%; */
         object-fit: cover;
     }
 `
 
 export const ProductInfo = styled.div`
-    /* flex-grow: 50; */
-    /* flex: 0 0 50; */
-    width: 40%;
+    padding: 1rem;
 
     border: 2px solid green;
 
-    padding: 2rem;
+    @media ${size.md} {
+        display: flex;
+        width: 40%;
+    }
 `
 
 export const Flex = styled.div`
-    border: 2px solid green;
-
     display: flex;
 `
 

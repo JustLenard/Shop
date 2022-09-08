@@ -1,7 +1,16 @@
+import { size } from '../../../utils/breakpoints'
 import styled from 'styled-components'
 
 export const MainContainer = styled.div`
-    padding: 2rem;
+    padding: 0.5rem;
+
+    @media ${size.md} {
+        padding: 1rem;
+    }
+
+    @media ${size.lg} {
+        padding: 2rem;
+    }
 `
 
 export const FlexContainer = styled.div`
