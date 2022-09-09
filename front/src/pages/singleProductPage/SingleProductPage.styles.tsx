@@ -9,7 +9,12 @@ export const MainContainer = styled.div`
 `
 
 export const ImagesContainer = styled.div`
-    @media ${size.md} {
+    /* @media ${size.md} {
+        display: column;
+        width: 60%;
+    } */
+
+    @media ${size.lg} {
         display: flex;
         width: 60%;
     }
@@ -48,6 +53,7 @@ export const ProductInfo = styled.div`
 
     @media ${size.md} {
         display: flex;
+        flex-direction: column;
         width: 40%;
     }
 `
