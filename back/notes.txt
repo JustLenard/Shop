@@ -1,0 +1,36 @@
+ query Query {
+  getAllProducts {
+    id
+    name
+  }
+}
+
+
+# mutation{
+#   deleteProduct(id: "631f114298851c8c9304ce3e")
+# }
+
+
+
+
+
+# query GetProduct {
+#   getProduct(id: "631f2193ea94b0f873a2d23c") {
+#     id
+#     name
+#   }
+# }
+
+
+# mutation {
+#   addProduct(product: {
+#     name: "dude5"
+#   }){
+#     id
+#     name
+#  }
+    # deleteProduct(id: "631f113f98851c8c9304ce3c")
+      
+    # }
+
+# }

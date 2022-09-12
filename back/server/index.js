@@ -7,6 +7,7 @@ require('dotenv').config()
 const port = process.env.PORT || 5000
 const connectDB = require('./config/db')
 
+// Connect to database
 connectDB()
 
 async function startServer() {
@@ -21,33 +22,6 @@ startServer()
 const app = express()
 
 app.listen({ port: port }, () => {
-    // console.log(`🚀 Server ready at http://localhost:${port}`)
+    console.log(`🚀 Server ready at http://localhost:${port}`)
 })
 // console.log(`🚀 Server ready at http://localhost:3001${server.graphqlPath}`);
-
-const getWord = (arr, num) => {
-    const uniqueWords = []
-
-    arr.forEach((element) => {
-        if (!uniqueWords.includes(element)) {
-            uniqueWords.push(element)
-        }
-    })
-
-    const toReturn = uniqueWords.map((uniqueWord) => {
-        if (arr.filter((word) => word !== uniqueWord).length === num) {
-            return 'f'
-        } else {
-            return 'fuck'
-        }
-    })
-
-    return toReturn
-}
-
-let response = getWord(
-    ['zone', 'zone', 'zone', 'abigail', 'theta', 'form', 'libe', 'zas'],
-    2
-)
-
-console.log('This is i', response)

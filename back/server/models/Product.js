@@ -7,15 +7,15 @@ const ProductSchema = new mongoose.Schema({
     description: {
         type: String,
     },
-    image: {
-        type: String,
-    },
+    // image: {
+    //     type: String,
+    // },
     price: {
         type: Number,
     },
-    currency: {
-        type: String,
-    },
+    // currency: {
+    //     type: String,
+    // },
 })
 
 module.exports = mongoose.model('Product', ProductSchema)
