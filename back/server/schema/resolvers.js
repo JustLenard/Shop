@@ -11,9 +11,27 @@ const resolvers = {
     },
     Mutation: {
         addProduct: async (parent, args, context, info) => {
-            const { name, price, description } = args.product
-            console.log('This is name', name)
-            const product = new Product({ name, price, description })
+            const {
+                name,
+                description,
+                category,
+                prices,
+                attributes,
+                brand,
+                gallery,
+            } = args.product
+            console.log('This is prices', prices)
+            console.log('This is name', attributes)
+            console.log('This is attributes.items', attributes[0])
+            const product = new Product({
+                name,
+                description,
+                category,
+                prices,
+                attributes,
+                brand,
+                gallery,
+            })
             await product.save()
             return product
         },

@@ -18,6 +18,10 @@ const ProductCard: React.FC<Props> = ({
     price,
 }: Props) => {
     const navigate = useNavigate()
+    console.log('This is image', image)
+
+    image =
+        'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61EdREF13eL._AC_SY550._SX._UX._SY._UY_.jpg'
 
     const handleClick = () => {
         navigate(routes.singleProductPage)

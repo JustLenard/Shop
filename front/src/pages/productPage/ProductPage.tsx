@@ -11,7 +11,11 @@ const ProductPage: React.FC<Props> = () => {
         title: 'Product Title',
         price: 100,
         currency: 'USD',
+        iamge: 'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/613CLq8LhBL._AC_SY550._SX._UX._SY._UY_.jpg',
     }
+
+    let imageLink =
+        'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/613CLq8LhBL._AC_SY550._SX._UX._SY._UY_.jpg'
 
     let product = {
         name: 'Product Name',
@@ -29,6 +33,7 @@ const ProductPage: React.FC<Props> = () => {
             <CartItemCard {...product} />
             <Button text={'Orders'} color={'green'} />
             <Button text={'White Button'} color={'white'} />
+            <img src={imageLink} alt="dress"></img>
         </>
     )
 }

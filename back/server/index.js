@@ -24,4 +24,3 @@ const app = express()
 app.listen({ port: port }, () => {
     console.log(`🚀 Server ready at http://localhost:${port}`)
 })
-// console.log(`🚀 Server ready at http://localhost:3001${server.graphqlPath}`);

@@ -1,11 +1,31 @@
 const { gql } = require('apollo-server-express')
 
 const typeDefs = gql`
+    type Price {
+        currency: String!
+        amount: Float!
+    }
+
+    type Attribute {
+        displayValue: String!
+        value: String!
+    }
+
+    type AttributeSet {
+        name: String!
+        type: String!
+        items: [Attribute!]!
+    }
+
     type Product {
         id: ID
-        name: String
-        price: Int
-        description: String
+        name: String!
+        description: String!
+        category: String!
+        brand: String!
+        prices: [Price]!
+        attributes: [AttributeSet!]!
+        gallery: [String!]!
     }
 
     # Query
@@ -14,9 +34,30 @@ const typeDefs = gql`
         getProduct(id: ID): Product
     }
 
+    input AttributeInput {
+        displayValue: String!
+        value: String!
+    }
+
+    input AttributeSetInput {
+        name: String!
+        type: String!
+        items: [AttributeInput!]!
+    }
+
+    input PriceInput {
+        currency: String!
+        amount: Float!
+    }
+
     input ProductInput {
-        name: String
-        price: Int
+        name: String!
+        description: String!
+        category: String!
+        brand: String!
+        prices: [PriceInput!]!
+        attributes: [AttributeSetInput!]!
+        gallery: [String!]!
     }
 
     #Mutations
