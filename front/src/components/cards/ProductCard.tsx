@@ -4,38 +4,49 @@ import animeGirl from '../../assets/images/animeGirl.jpeg'
 import { routes } from '../../routing/routes'
 import * as S from './styles/ProductCard.styles'
 
-interface Props {
-    image?: string
+interface Price {
+    currency: string
+    amount: number
+}
+export interface IProductCard {
     title?: string
-    currency?: string
-    price?: number
+    gallery?: string[]
+    id: string
+    // prices?: Price
+    prices: {
+        currency: string
+        amount: number
+    }
 }
 
-const ProductCard: React.FC<Props> = ({
-    currency,
-    image,
+const ProductCard: React.FC<IProductCard> = ({
+    gallery,
     title,
-    price,
-}: Props) => {
+    id,
+    prices,
+}: IProductCard) => {
     const navigate = useNavigate()
-    console.log('This is image', image)
+    // console.log('This is image', image)
+    // console.log(title, currency, price)
 
-    image =
-        'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61EdREF13eL._AC_SY550._SX._UX._SY._UY_.jpg'
+    // image =
+    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61EdREF13eL._AC_SY550._SX._UX._SY._UY_.jpg'
 
     const handleClick = () => {
-        navigate(routes.singleProductPage)
+        navigate(`${routes.singleProductPage}:${id}`)
     }
+
+    console.log('This is image', gallery)
 
     return (
         <S.CardBody onClick={handleClick}>
             <S.ImageWrapper>
-                <img src={image || animeGirl} alt="product" />
+                <img src={gallery || animeGirl} alt="product" />
             </S.ImageWrapper>
             <S.Title>{title}</S.Title>
             <S.Price>
-                {currency}
-                {price}
+                {prices.currency}
+                {prices.amount}
             </S.Price>
         </S.CardBody>
     )

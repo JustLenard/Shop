@@ -7,7 +7,7 @@ export const routes = {
 
 export const routeElements = [
     {
-        path: routes.singleProductPage,
+        path: `${routes.singleProductPage}:id`,
         exact: true,
         element: <SingleProductPage />,
     },
