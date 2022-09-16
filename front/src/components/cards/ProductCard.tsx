@@ -4,49 +4,46 @@ import animeGirl from '../../assets/images/animeGirl.jpeg'
 import { routes } from '../../routing/routes'
 import * as S from './styles/ProductCard.styles'
 
-interface Price {
+interface IPrice {
     currency: string
     amount: number
+    symbol: string
 }
 export interface IProductCard {
-    title?: string
+    name?: string
     gallery?: string[]
     id: string
-    // prices?: Price
-    prices: {
-        currency: string
-        amount: number
-    }
+    prices: Array<IPrice>
 }
 
 const ProductCard: React.FC<IProductCard> = ({
     gallery,
-    title,
+    name,
     id,
     prices,
 }: IProductCard) => {
     const navigate = useNavigate()
     // console.log('This is image', image)
-    // console.log(title, currency, price)
+    // console.log(name, currency, price)
 
     // image =
     //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61EdREF13eL._AC_SY550._SX._UX._SY._UY_.jpg'
 
     const handleClick = () => {
-        navigate(`${routes.singleProductPage}:${id}`)
+        navigate(`${routes.singleProductPage}:${id}`, { state: id })
     }
 
-    console.log('This is image', gallery)
+    console.log('This is prices', prices)
 
     return (
         <S.CardBody onClick={handleClick}>
             <S.ImageWrapper>
                 <img src={gallery || animeGirl} alt="product" />
             </S.ImageWrapper>
-            <S.Title>{title}</S.Title>
+            <S.Title>{name}</S.Title>
             <S.Price>
-                {prices.currency}
-                {prices.amount}
+                {prices[0].currency}
+                {prices[0].amount}
             </S.Price>
         </S.CardBody>
     )

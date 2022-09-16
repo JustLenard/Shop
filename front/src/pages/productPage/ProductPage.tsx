@@ -13,31 +13,6 @@ import {
     gql,
 } from '@apollo/client'
 
-const detailedProduct = gql`
-    query {
-        getAllProducts {
-            id
-            name
-            description
-            category
-            prices {
-                currency
-                amount
-            }
-            brand
-            attributes {
-                name
-                type
-                items {
-                    displayValue
-                    value
-                }
-            }
-            gallery
-        }
-    }
-`
-
 const womenClothes = gql`
     query {
         getAllProducts {
@@ -56,19 +31,12 @@ const womenClothes = gql`
 const ProductPage: React.FC<{}> = () => {
     const { data, loading, error } = useQuery(womenClothes)
 
-    const images = [
-        'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61EdREF13eL._AC_UY550_.jpg',
-        'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61MOQzG3Q5L._AC_UY550_.jpg',
-        'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61ZlneaN66L._AC_SY550._SX._UX._SY._UY_.jpg',
-        'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81mRDeQuC1L._AC_SY550._SX._UX._SY._UY_.jpg',
-    ]
-
-    const products = {
-        title: 'Product Title f',
-        price: 100,
-        currency: 'USD',
-        image: images,
-    }
+    // const images = [
+    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61EdREF13eL._AC_UY550_.jpg',
+    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61MOQzG3Q5L._AC_UY550_.jpg',
+    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61ZlneaN66L._AC_SY550._SX._UX._SY._UY_.jpg',
+    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81mRDeQuC1L._AC_SY550._SX._UX._SY._UY_.jpg',
+    // ]
 
     let product = {
         name: 'Product Name',
@@ -81,13 +49,11 @@ const ProductPage: React.FC<{}> = () => {
     if (error) {
         return <div>Error</div>
     }
-    // console.log('This is data', data.getAllProducts)
 
     return (
         <>
             <FlexContainer>
                 {data.getAllProducts.map((item: IProductCard) => {
-                    console.log('This is item', item)
                     return <ProductCard {...item} key={item.id} />
                 })}
             </FlexContainer>

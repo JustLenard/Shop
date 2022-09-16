@@ -30,15 +30,15 @@ const CartItemCard: React.FC<Props> = ({ image, name, price }) => {
         <S.Container>
             <S.Content>
                 <S.ProductName>{name}</S.ProductName>
-                <S.Price>{price}</S.Price>
-                <Size name={'Size'} sizes={[{ size: 'xl' }, { size: 'sm' }]} />
+                {/* <S.Price>{price}</S.Price> */}
+                {/* <Size name={'Size'} sizes={[{ size: 'xl' }, { size: 'sm' }]} />
                 <Color
                     colors={[
                         { color: 'red' },
                         { color: 'blue' },
                         { color: 'green' },
                     ]}
-                />
+                /> */}
             </S.Content>
             <S.PlusMinusContainer>
                 <S.PlusMinus onClick={incereaseAmount}>+</S.PlusMinus>

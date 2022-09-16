@@ -58,6 +58,8 @@ export const ProductInfo = styled.div`
     }
 `
 
+export const BrandName = styled.div``
+
 export const Flex = styled.div`
     display: flex;
 `

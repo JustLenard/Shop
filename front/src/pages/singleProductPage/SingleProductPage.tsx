@@ -1,14 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
 import * as S from './SingleProductPage.styles'
-import animeGirl from '../../assets/images/animeGirl.jpeg'
 import { Price, Size, Color } from '../../components/productOptions'
 import { Button } from '../../components/buttons'
+import { useLocation } from 'react-router-dom'
+import { useQuery, gql } from '@apollo/client'
+import Attributes from '../../components/productOptions/Attributes'
+import { IAttribute, IAttributeSet } from '../../types/types'
+
+const getSingleProduct = (id: string) => {
+    return gql`
+    query {
+        getProduct (id:"${id}"){
+            id
+            name
+            description
+            category
+            prices {
+                currency
+                amount
+            }
+            brand
+            attributes {
+                name
+                type
+                items {
+                    displayValue
+                    value
+                }
+            }
+            gallery
+        }
+    }
+    `
+}
 
 interface Props {}
 
 const SingleProductPage: React.FC<Props> = () => {
-    const handleClick = () => {
-        console.log('f')
+    const location = useLocation()
+    const objectId = location.pathname.split(':')[1]
+
+    const { data, loading, error } = useQuery(getSingleProduct(objectId))
+    const [focusedImage, setFocusedImage] = useState('')
+
+    if (loading) {
+        return <div>Loading</div>
+    }
+    if (error) {
+        return <div>Error</div>
+    }
+
+    const product = data.getProduct
+
+    console.log('This is product', product)
+
+    const handleHover = (imageLink: string) => {
+        setFocusedImage(imageLink)
     }
 
     return (
@@ -16,35 +63,41 @@ const SingleProductPage: React.FC<Props> = () => {
             <S.MainContainer>
                 <S.ImagesContainer>
                     <S.SmallImages>
-                        <img
-                            onClick={handleClick}
-                            src={animeGirl}
-                            alt="product"
-                        />
-                        <img src={animeGirl} alt="product" />
-                        <img src={animeGirl} alt="product" />
+                        {product.gallery.map((imageLink: string) => {
+                            return (
+                                <img
+                                    src={imageLink}
+                                    alt="product"
+                                    key={imageLink}
+                                    onMouseOver={() => handleHover(imageLink)}
+                                />
+                            )
+                        })}
                     </S.SmallImages>
                     <S.BigImageWrapper>
-                        <img src={animeGirl} alt="product" />
+                        <img
+                            src={focusedImage || product.gallery[0]}
+                            alt="focused product"
+                        />
                     </S.BigImageWrapper>
                 </S.ImagesContainer>
                 <S.ProductInfo>
-                    <S.ProductName>Apollow running short</S.ProductName>
-                    <Size name={'size'} sizes={[{ size: 'small' }]} />
-                    <Color colors={[{ color: 'small' }]} />
+                    <S.ProductName>{product.name}</S.ProductName>
+                    <S.BrandName>{product.brand}</S.BrandName>
+                    {product.attributes.map((attribute: IAttributeSet) => {
+                        return (
+                            <Attributes
+                                attributeSet={attribute}
+                                key={attribute.type}
+                            />
+                        )
+                    })}
+
+                    {/* <Size name={'size'} sizes={[{ size: 'small' }]} />
+                    <Color colors={[{ color: 'small' }]} /> */}
                     <Price symbol={'$'} price={50} />
                     <Button text={'add to cart'} color={'green'} />
-                    <S.Description>
-                        Dolor qui incididunt adipisicing id laboris id elit. In
-                        commodo veniam commodo voluptate ipsum cupidatat cillum
-                        ullamco nostrud ex. Dolore duis velit cupidatat eu amet
-                        et deserunt. Pariatur deserunt laboris aliquip enim
-                        dolore minim velit consectetur nulla do. Minim ex sit
-                        reprehenderit voluptate magna labore culpa consequat
-                        adipisicing elit cupidatat eu ex ad. Fugiat dolore
-                        officia aliqua cupidatat veniam irure nisi minim
-                        reprehenderit nisi. In ex sit ullamco qui.
-                    </S.Description>
+                    <S.Description>{product.description}</S.Description>
                 </S.ProductInfo>
             </S.MainContainer>
         </>
