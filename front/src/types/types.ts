@@ -5,7 +5,18 @@ export interface IAttribute {
 
 export interface IAttributeSet {
     name: string
-    // type: 'color' | 'size
     type: string
     items: Array<IAttribute>
+    selected?: IAttribute
+}
+
+export interface IAttributeProps {
+    attributeSet: IAttributeSet
+    addAttributes: (attribute: IAttribute, attributeSet: IAttributeSet) => void
+}
+
+export interface IPrice {
+    symbol: string
+    currency: string
+    amount: number
 }

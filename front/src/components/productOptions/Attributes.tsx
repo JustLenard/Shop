@@ -1,21 +1,23 @@
 import React from 'react'
-import { IAttributeSet } from '../../types/types'
+import { IAttributeSet, IAttribute } from '../../types/types'
 import Color from './Color'
 import Size from './Size'
 
 interface Props {
-    // attributeType: 'color' | 'size'
     attributeSet: IAttributeSet
+    addAttributes: (attribute: IAttribute, attributeSet: IAttributeSet) => void
 }
 
-const Attributes: React.FC<Props> = ({ attributeSet }) => {
+const Attributes: React.FC<Props> = ({ addAttributes, attributeSet }) => {
     const attrTypes = {
-        color: <Color attributeSet={attributeSet} />,
-        // size: <Size />,
+        color: (
+            <Color addAttributes={addAttributes} attributeSet={attributeSet} />
+        ),
+        size: (
+            <Size addAttributes={addAttributes} attributeSet={attributeSet} />
+        ),
     }
     const val = attributeSet.type
-
-    console.log('This is attributeSet', attributeSet)
 
     return <>{attrTypes[val as keyof typeof attrTypes]}</>
 }

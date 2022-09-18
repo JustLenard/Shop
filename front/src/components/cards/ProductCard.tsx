@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import animeGirl from '../../assets/images/animeGirl.jpeg'
 import { routes } from '../../routing/routes'
+import { GlobalContext } from '../layout/Layout'
 import * as S from './styles/ProductCard.styles'
 
 interface IPrice {
@@ -23,17 +24,14 @@ const ProductCard: React.FC<IProductCard> = ({
     prices,
 }: IProductCard) => {
     const navigate = useNavigate()
-    // console.log('This is image', image)
-    // console.log(name, currency, price)
-
-    // image =
-    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61EdREF13eL._AC_SY550._SX._UX._SY._UY_.jpg'
+    const { currency } = useContext(GlobalContext)
 
     const handleClick = () => {
         navigate(`${routes.singleProductPage}:${id}`, { state: id })
     }
 
-    console.log('This is prices', prices)
+    const correctPrice =
+        prices.find((priceObj) => priceObj.currency === currency) || prices[0]
 
     return (
         <S.CardBody onClick={handleClick}>
@@ -42,8 +40,7 @@ const ProductCard: React.FC<IProductCard> = ({
             </S.ImageWrapper>
             <S.Title>{name}</S.Title>
             <S.Price>
-                {prices[0].currency}
-                {prices[0].amount}
+                {`${correctPrice.symbol}  ${correctPrice.amount.toFixed(2)}`}
             </S.Price>
         </S.CardBody>
     )

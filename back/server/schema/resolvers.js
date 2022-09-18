@@ -1,5 +1,5 @@
 const Product = require('../models/Product')
-
+const { addAllPrices } = require('../utils/moneyConveter.js')
 const resolvers = {
     Query: {
         getAllProducts: async () => {
@@ -11,7 +11,7 @@ const resolvers = {
     },
     Mutation: {
         addProduct: async (parent, args, context, info) => {
-            const {
+            let {
                 name,
                 description,
                 category,
@@ -20,9 +20,9 @@ const resolvers = {
                 brand,
                 gallery,
             } = args.product
-            console.log('This is prices', prices)
-            console.log('This is name', attributes)
-            console.log('This is attributes.items', attributes[0])
+
+            prices = addAllPrices(prices)
+
             const product = new Product({
                 name,
                 description,
@@ -33,6 +33,7 @@ const resolvers = {
                 gallery,
             })
             await product.save()
+
             return product
         },
         deleteProduct: async (parent, { id }, context, info) => {

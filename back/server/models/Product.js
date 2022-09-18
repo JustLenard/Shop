@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const { symbols } = require('../utils/moneyConveter')
 
 const Price = new mongoose.Schema({
     currency: {
@@ -8,6 +9,11 @@ const Price = new mongoose.Schema({
     amount: {
         required: true,
         type: Number,
+    },
+    symbol: {
+        type: String,
+        required: true,
+        enum: symbols,
     },
 })
 

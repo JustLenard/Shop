@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React, { useState, createContext, useContext } from 'react'
 import * as S from './SingleProductPage.styles'
 import { Price, Size, Color } from '../../components/productOptions'
 import { Button } from '../../components/buttons'
 import { useLocation } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
 import Attributes from '../../components/productOptions/Attributes'
-import { IAttribute, IAttributeSet } from '../../types/types'
+import { IAttribute, IAttributeSet, IPrice } from '../../types/types'
+import { GlobalContext } from '../../components/layout/Layout'
 
 const getSingleProduct = (id: string) => {
     return gql`
@@ -18,6 +19,7 @@ const getSingleProduct = (id: string) => {
             prices {
                 currency
                 amount
+                symbol
             }
             brand
             attributes {
@@ -42,6 +44,7 @@ const SingleProductPage: React.FC<Props> = () => {
 
     const { data, loading, error } = useQuery(getSingleProduct(objectId))
     const [focusedImage, setFocusedImage] = useState('')
+    const { currency } = useContext(GlobalContext)
 
     if (loading) {
         return <div>Loading</div>
@@ -52,11 +55,28 @@ const SingleProductPage: React.FC<Props> = () => {
 
     const product = data.getProduct
 
-    console.log('This is product', product)
-
     const handleHover = (imageLink: string) => {
         setFocusedImage(imageLink)
     }
+
+    const selectedAttributes: Array<IAttributeSet> = []
+
+    const addAttributes = (
+        attribute: IAttribute,
+        attributeSet: IAttributeSet
+    ) => {
+        const selectedAtr = {
+            ...attributeSet,
+            selected: attribute,
+        }
+
+        selectedAttributes.push(selectedAtr)
+    }
+
+    const correctPrice =
+        product.prices.find(
+            (priceObj: IPrice) => priceObj.currency === currency
+        ) || product.prices[0]
 
     return (
         <>
@@ -89,13 +109,14 @@ const SingleProductPage: React.FC<Props> = () => {
                             <Attributes
                                 attributeSet={attribute}
                                 key={attribute.type}
+                                addAttributes={addAttributes}
                             />
                         )
                     })}
-
-                    {/* <Size name={'size'} sizes={[{ size: 'small' }]} />
-                    <Color colors={[{ color: 'small' }]} /> */}
-                    <Price symbol={'$'} price={50} />
+                    <Price
+                        symbol={correctPrice.symbol}
+                        price={correctPrice.amount.toFixed(2)}
+                    />
                     <Button text={'add to cart'} color={'green'} />
                     <S.Description>{product.description}</S.Description>
                 </S.ProductInfo>

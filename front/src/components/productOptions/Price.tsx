@@ -9,11 +9,8 @@ interface Props {
 const Price: React.FC<Props> = ({ symbol, price }) => {
     return (
         <S.Container>
-            <S.OptionName>Price</S.OptionName>
-            <S.Price>
-                {symbol}
-                {price}
-            </S.Price>
+            <S.OptionName>Price:</S.OptionName>
+            <S.Price>{`${symbol}  ${price}`}</S.Price>
         </S.Container>
     )
 }

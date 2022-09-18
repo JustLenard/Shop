@@ -22,6 +22,7 @@ const womenClothes = gql`
             prices {
                 currency
                 amount
+                symbol
             }
             gallery
         }
@@ -31,17 +32,7 @@ const womenClothes = gql`
 const ProductPage: React.FC<{}> = () => {
     const { data, loading, error } = useQuery(womenClothes)
 
-    // const images = [
-    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61EdREF13eL._AC_UY550_.jpg',
-    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61MOQzG3Q5L._AC_UY550_.jpg',
-    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/61ZlneaN66L._AC_SY550._SX._UX._SY._UY_.jpg',
-    //     'https://m.media-amazon.com/images/W/WEBP_402378-T2/images/I/81mRDeQuC1L._AC_SY550._SX._UX._SY._UY_.jpg',
-    // ]
-
-    let product = {
-        name: 'Product Name',
-        price: 100,
-    }
+    console.log('This is data', data)
 
     if (loading) {
         return <div>Loading</div>
@@ -57,7 +48,7 @@ const ProductPage: React.FC<{}> = () => {
                     return <ProductCard {...item} key={item.id} />
                 })}
             </FlexContainer>
-            <CartItemCard {...product} />
+            {/* <CartItemCard {...product} /> */}
             <Button text={'Orders'} color={'green'} />
             <Button text={'White Button'} color={'white'} />
             {/* <img src={imageLink} alt="dress"></img> */}

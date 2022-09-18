@@ -4,6 +4,7 @@ const typeDefs = gql`
     type Price {
         currency: String!
         amount: Float!
+        symbol: String!
     }
 
     type Attribute {
@@ -48,6 +49,7 @@ const typeDefs = gql`
     input PriceInput {
         currency: String!
         amount: Float!
+        symbol: String!
     }
 
     input ProductInput {
