@@ -12,7 +12,6 @@ import {
     useQuery,
     gql,
 } from '@apollo/client'
-import { useLocation } from 'react-router-dom'
 
 const womenClothes = gql`
     query {
@@ -30,13 +29,10 @@ const womenClothes = gql`
     }
 `
 
-const ProductPage: React.FC<{}> = () => {
+const ProductsPage: React.FC<{}> = () => {
     const { data, loading, error } = useQuery(womenClothes)
 
-    const { state } = useLocation()
-    console.log('This is state', state)
-
-    const currentCategory = state ? state : 'Women'
+    console.log('This is data', data)
 
     if (loading) {
         return <div>Loading</div>
@@ -45,16 +41,10 @@ const ProductPage: React.FC<{}> = () => {
         return <div>Error</div>
     }
 
-    const filteredProducts = data.getAllProducts.filter(
-        (product: IProductCard) => product.category === currentCategory
-    )
-
-    console.log('This is filteredProducts', filteredProducts)
-
     return (
         <>
             <FlexContainer>
-                {filteredProducts.map((item: IProductCard) => {
+                {data.getAllProducts.map((item: IProductCard) => {
                     return <ProductCard {...item} key={item.id} />
                 })}
             </FlexContainer>
@@ -65,4 +55,4 @@ const ProductPage: React.FC<{}> = () => {
         </>
     )
 }
-export default ProductPage
+export default ProductsPage

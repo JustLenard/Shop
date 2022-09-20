@@ -8,6 +8,22 @@ const resolvers = {
         getProduct: async (_parent, { id }, _context, _info) => {
             return await Product.findById(id)
         },
+
+        getProductsByCategory: async (
+            _parent,
+            { category },
+            context,
+            _info
+        ) => {
+            // const i = await Product.find(
+            //     (product) => product.category === category
+            // )
+            // Product.find()
+            // console.log('This is i', i)
+            return await context.db.product.find(
+                (product) => product.category == category
+            )
+        },
     },
     Mutation: {
         addProduct: async (parent, args, context, info) => {
@@ -36,10 +52,12 @@ const resolvers = {
 
             return product
         },
+
         deleteProduct: async (parent, { id }, context, info) => {
             await Product.findByIdAndDelete(id)
             return 'Done'
         },
+
         updateProduct: async (parent, args, context, info) => {
             const { id } = args
             const { name } = args.product

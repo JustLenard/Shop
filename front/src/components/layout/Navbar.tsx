@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { routes } from '../../routing/routes'
 import { MoneyDropdown } from '../dropdowns'
 import { NavbarContainer, Cell } from './styles/Navbar.styles'
 
@@ -9,14 +10,13 @@ const Navbar: React.FC<Props> = () => {
     return (
         <NavbarContainer>
             <Cell>
-                {/* <Link>
-                
-                </Link> */}
-                {/* <div>women</div>
-                <div>man</div>
-                <div>kids</div> */}
+                <Link to={routes.productPage} state={'Women'}>
+                    Women
+                </Link>
 
-                {/* <Link to={routes}></Link> */}
+                <Link to={routes.productPage} state={'Man'}>
+                    Man
+                </Link>
             </Cell>
             <Cell>Logo</Cell>
             <Cell>

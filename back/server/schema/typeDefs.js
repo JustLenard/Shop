@@ -32,6 +32,7 @@ const typeDefs = gql`
     # Query
     type Query {
         getAllProducts: [Product!]!
+        getProductsByCategory(category: String!): [Product!]!
         getProduct(id: ID): Product
     }
 

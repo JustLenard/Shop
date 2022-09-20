@@ -15,6 +15,7 @@ export interface IProductCard {
     gallery?: string[]
     id: string
     prices: Array<IPrice>
+    category: string
 }
 
 const ProductCard: React.FC<IProductCard> = ({
