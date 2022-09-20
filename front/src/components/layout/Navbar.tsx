@@ -10,6 +10,10 @@ const Navbar: React.FC<Props> = () => {
     return (
         <NavbarContainer>
             <Cell>
+                <Link to={routes.productPage} state={'All'}>
+                    All
+                </Link>
+
                 <Link to={routes.productPage} state={'Women'}>
                     Women
                 </Link>

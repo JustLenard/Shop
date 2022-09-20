@@ -15,14 +15,7 @@ const resolvers = {
             context,
             _info
         ) => {
-            // const i = await Product.find(
-            //     (product) => product.category === category
-            // )
-            // Product.find()
-            // console.log('This is i', i)
-            return await context.db.product.find(
-                (product) => product.category == category
-            )
+            return await Product.find({ category: category })
         },
     },
     Mutation: {

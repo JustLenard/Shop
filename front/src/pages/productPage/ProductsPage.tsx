@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { Button } from '../../components/buttons'
 import { ProductCard } from '../../components/cards'
 import { IProductCard } from '../../components/cards/ProductCard'
@@ -12,8 +12,9 @@ import {
     useQuery,
     gql,
 } from '@apollo/client'
+import { useLocation } from 'react-router-dom'
 
-const womenClothes = gql`
+const allProducts = gql`
     query {
         getAllProducts {
             id
@@ -30,7 +31,12 @@ const womenClothes = gql`
 `
 
 const ProductsPage: React.FC<{}> = () => {
-    const { data, loading, error } = useQuery(womenClothes)
+    const [products, setProdcuts] = useState<Array<IProductCard>>([])
+    const { state } = useLocation()
+
+    const currentCategory = state ? state : 'All'
+
+    const { data, loading, error } = useQuery(allProducts)
 
     console.log('This is data', data)
 

@@ -28,7 +28,7 @@ const ProductCard: React.FC<IProductCard> = ({
     const { currency } = useContext(GlobalContext)
 
     const handleClick = () => {
-        navigate(`${routes.singleProductPage}:${id}`, { state: id })
+        navigate(`${routes.singleProductsPage}:${id}`, { state: id })
     }
 
     const correctPrice =
