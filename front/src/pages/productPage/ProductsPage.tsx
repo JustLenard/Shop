@@ -3,15 +3,8 @@ import { Button } from '../../components/buttons'
 import { ProductCard } from '../../components/cards'
 import { IProductCard } from '../../components/cards/ProductCard'
 
-import CartItemCard from '../../components/cards/CartItemCard'
 import { FlexContainer } from '../../components/layout/styles/Containers'
-import {
-    ApolloClient,
-    ApolloProvider,
-    InMemoryCache,
-    useQuery,
-    gql,
-} from '@apollo/client'
+import { useQuery, gql } from '@apollo/client'
 import { useLocation } from 'react-router-dom'
 
 const allProducts = gql`
@@ -30,15 +23,43 @@ const allProducts = gql`
     }
 `
 
+const getProductsFromCategory = (currentCategory: string) => {
+    return gql`
+        query {
+            getProductsByCategory(category: "${currentCategory}") {
+                id
+                name
+                category
+                prices {
+                    currency
+                    amount
+                    symbol
+                }
+                gallery
+            }
+        }
+    `
+}
+
+// Decide what query to use
+const choseQuery = (currentCategory: string) => {
+    if (currentCategory === 'All') {
+        return allProducts
+    }
+    return getProductsFromCategory(currentCategory)
+}
+
 const ProductsPage: React.FC<{}> = () => {
-    const [products, setProdcuts] = useState<Array<IProductCard>>([])
     const { state } = useLocation()
 
-    const currentCategory = state ? state : 'All'
+    let currentCategory: string = 'All'
+    if (typeof state === 'string') {
+        currentCategory = state
+    }
 
-    const { data, loading, error } = useQuery(allProducts)
+    const query = choseQuery(currentCategory)
 
-    console.log('This is data', data)
+    const { data, loading, error } = useQuery(query)
 
     if (loading) {
         return <div>Loading</div>
@@ -47,17 +68,22 @@ const ProductsPage: React.FC<{}> = () => {
         return <div>Error</div>
     }
 
+    let products
+    if (currentCategory === 'All') {
+        products = data.getAllProducts
+    } else {
+        products = data.getProductsByCategory
+    }
+
     return (
         <>
             <FlexContainer>
-                {data.getAllProducts.map((item: IProductCard) => {
+                {products.map((item: IProductCard) => {
                     return <ProductCard {...item} key={item.id} />
                 })}
             </FlexContainer>
-            {/* <CartItemCard {...product} /> */}
             <Button text={'Orders'} color={'green'} />
             <Button text={'White Button'} color={'white'} />
-            {/* <img src={imageLink} alt="dress"></img> */}
         </>
     )
 }

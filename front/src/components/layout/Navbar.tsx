@@ -2,32 +2,36 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { routes } from '../../routing/routes'
 import { MoneyDropdown } from '../dropdowns'
-import { NavbarContainer, Cell } from './styles/Navbar.styles'
+import * as S from './styles/Navbar.styles'
 
 interface Props {}
 
 const Navbar: React.FC<Props> = () => {
     return (
-        <NavbarContainer>
-            <Cell>
-                <Link to={routes.productPage} state={'All'}>
-                    All
-                </Link>
-
-                <Link to={routes.productPage} state={'Women'}>
-                    Women
-                </Link>
-
-                <Link to={routes.productPage} state={'Man'}>
-                    Man
-                </Link>
-            </Cell>
-            <Cell>Logo</Cell>
-            <Cell>
+        <S.NavbarContainer>
+            <S.Section>
+                <S.LinkWrapper>
+                    <Link to={routes.productPage} state={'All'}>
+                        All
+                    </Link>
+                </S.LinkWrapper>
+                <S.LinkWrapper>
+                    <Link to={routes.productPage} state={'Women'}>
+                        Women
+                    </Link>
+                </S.LinkWrapper>
+                <S.LinkWrapper>
+                    <Link to={routes.productPage} state={'Men'}>
+                        Man
+                    </Link>
+                </S.LinkWrapper>
+            </S.Section>
+            <S.Section>Logo</S.Section>
+            <S.Section>
                 <MoneyDropdown />
                 <div>cart</div>
-            </Cell>
-        </NavbarContainer>
+            </S.Section>
+        </S.NavbarContainer>
     )
 }
 

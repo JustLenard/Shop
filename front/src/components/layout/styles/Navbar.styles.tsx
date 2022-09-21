@@ -10,7 +10,16 @@ export const NavbarContainer = styled.nav`
     height: 5rem;
 `
 
-export const Cell = styled.div`
+export const Section = styled.div`
     display: flex;
     gap: 1rem;
+`
+
+export const LinkWrapper = styled.div`
+    border: 1px solid red;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
 `
