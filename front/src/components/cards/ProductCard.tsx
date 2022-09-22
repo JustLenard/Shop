@@ -6,45 +6,37 @@ import { GlobalContext } from '../layout/Layout'
 import * as S from './styles/ProductCard.styles'
 
 interface IPrice {
-    currency: string
-    amount: number
-    symbol: string
+	currency: string
+	amount: number
+	symbol: string
 }
 export interface IProductCard {
-    name?: string
-    gallery?: string[]
-    id: string
-    prices: Array<IPrice>
-    category: string
+	name?: string
+	gallery?: string[]
+	id: string
+	prices: Array<IPrice>
+	category: string
 }
 
-const ProductCard: React.FC<IProductCard> = ({
-    gallery,
-    name,
-    id,
-    prices,
-}: IProductCard) => {
-    const navigate = useNavigate()
-    const { currency } = useContext(GlobalContext)
+const ProductCard: React.FC<IProductCard> = ({ gallery, name, id, prices }: IProductCard) => {
+	const navigate = useNavigate()
+	const { currency } = useContext(GlobalContext)
 
-    const handleClick = () => {
-        navigate(`${routes.singleProductsPage}:${id}`, { state: id })
-    }
+	const handleClick = () => {
+		navigate(`${routes.singleProductsPage}:${id}`, { state: id })
+	}
 
-    const correctPrice =
-        prices.find((priceObj) => priceObj.currency === currency) || prices[0]
+	const correctPrice = prices.find((priceObj) => priceObj.currency === currency) || prices[0]
 
-    return (
-        <S.CardBody onClick={handleClick}>
-            <S.ImageWrapper>
-                <img src={gallery || animeGirl} alt="product" />
-            </S.ImageWrapper>
-            <S.Title>{name}</S.Title>
-            <S.Price>
-                {`${correctPrice.symbol}  ${correctPrice.amount.toFixed(2)}`}
-            </S.Price>
-        </S.CardBody>
-    )
+	return (
+		<S.CardBody onClick={handleClick}>
+			<S.ImageWrapper>
+				<img src={gallery || animeGirl} alt="product" />
+			</S.ImageWrapper>
+			<S.Title>{name}</S.Title>
+			<S.Price>{`${correctPrice.symbol}  ${correctPrice.amount.toFixed(2)}`}</S.Price>
+		</S.CardBody>
+	)
 }
 
 export default ProductCard

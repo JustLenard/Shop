@@ -5,12 +5,12 @@ import { GlobalStyle } from './styles/globalStyles.styels'
 interface Props {}
 
 const App: React.FC<Props> = () => {
-    return (
-        <>
-            <GlobalStyle />
-            {<AppRoutes />}
-        </>
-    )
+	return (
+		<>
+			<GlobalStyle />
+			{<AppRoutes />}
+		</>
+	)
 }
 
 export default App

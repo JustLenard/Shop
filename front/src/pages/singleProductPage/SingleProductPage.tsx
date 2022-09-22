@@ -1,128 +1,104 @@
 import React, { useState, createContext, useContext } from 'react'
-import * as S from './SingleProductPage.styles'
+import * as S from './styles/SingleProductPage.styles'
 import { Price, Size, Color } from '../../components/productOptions'
 import { Button } from '../../components/buttons'
 import { useLocation } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
 import Attributes from '../../components/productOptions/Attributes'
-import { IAttribute, IAttributeSet, IPrice } from '../../types/types'
+import {
+	IAttribute,
+	IAttributeSet,
+	IAttributeSetWithSelection,
+	ICartItem,
+	IPrice,
+} from '../../types/types'
 import { GlobalContext } from '../../components/layout/Layout'
+import { getSingleProduct } from '../../queries'
+import ImageSection from './ImageSection'
 
-const getSingleProduct = (id: string) => {
-    return gql`
-    query {
-        getProduct (id:"${id}"){
-            id
-            name
-            description
-            category
-            prices {
-                currency
-                amount
-                symbol
-            }
-            brand
-            attributes {
-                name
-                type
-                items {
-                    displayValue
-                    value
-                }
-            }
-            gallery
-        }
-    }
-    `
-}
+import type { RootState } from '../../store/store'
+import { useSelector, useDispatch } from 'react-redux'
+import { addItem } from '../../store/cartSlice'
 
 interface Props {}
 
 const SingleProductPage: React.FC<Props> = () => {
-    const location = useLocation()
-    const objectId = location.pathname.split(':')[1]
+	const location = useLocation()
+	const dispatch = useDispatch()
 
-    const { data, loading, error } = useQuery(getSingleProduct(objectId))
-    const [focusedImage, setFocusedImage] = useState('')
-    const { currency } = useContext(GlobalContext)
+	const cart = useSelector((state: RootState) => state.cart)
+	console.log('This is cart', cart)
 
-    if (loading) {
-        return <div>Loading</div>
-    }
-    if (error) {
-        return <div>Error</div>
-    }
+	const objectId = location.pathname.split(':')[1]
 
-    const product = data.getProduct
+	const { data, loading, error } = useQuery(getSingleProduct(objectId))
+	const { currency } = useContext(GlobalContext)
 
-    const handleHover = (imageLink: string) => {
-        setFocusedImage(imageLink)
-    }
+	if (loading) {
+		return <div>Loading</div>
+	}
+	if (error) {
+		return <div>Error</div>
+	}
 
-    const selectedAttributes: Array<IAttributeSet> = []
+	const product = data.getProduct
 
-    const addAttributes = (
-        attribute: IAttribute,
-        attributeSet: IAttributeSet
-    ) => {
-        const selectedAtr = {
-            ...attributeSet,
-            selected: attribute,
-        }
+	let selectedAttributes: Array<IAttributeSetWithSelection> = []
 
-        selectedAttributes.push(selectedAtr)
-    }
+	const addAttributes = (attribute: IAttribute, attributeSet: IAttributeSet) => {
+		const selectedAtr: IAttributeSetWithSelection = {
+			...attributeSet,
+			selected: attribute,
+		}
 
-    const correctPrice =
-        product.prices.find(
-            (priceObj: IPrice) => priceObj.currency === currency
-        ) || product.prices[0]
+		selectedAttributes = selectedAttributes.filter(
+			(attrib) => attrib.type !== attributeSet.type
+		)
 
-    return (
-        <>
-            <S.MainContainer>
-                <S.ImagesContainer>
-                    <S.SmallImages>
-                        {product.gallery.map((imageLink: string) => {
-                            return (
-                                <img
-                                    src={imageLink}
-                                    alt="product"
-                                    key={imageLink}
-                                    onMouseOver={() => handleHover(imageLink)}
-                                />
-                            )
-                        })}
-                    </S.SmallImages>
-                    <S.BigImageWrapper>
-                        <img
-                            src={focusedImage || product.gallery[0]}
-                            alt="focused product"
-                        />
-                    </S.BigImageWrapper>
-                </S.ImagesContainer>
-                <S.ProductInfo>
-                    <S.ProductName>{product.name}</S.ProductName>
-                    <S.BrandName>{product.brand}</S.BrandName>
-                    {product.attributes.map((attribute: IAttributeSet) => {
-                        return (
-                            <Attributes
-                                attributeSet={attribute}
-                                key={attribute.type}
-                                addAttributes={addAttributes}
-                            />
-                        )
-                    })}
-                    <Price
-                        symbol={correctPrice.symbol}
-                        price={correctPrice.amount.toFixed(2)}
-                    />
-                    <Button text={'add to cart'} color={'green'} />
-                    <S.Description>{product.description}</S.Description>
-                </S.ProductInfo>
-            </S.MainContainer>
-        </>
-    )
+		selectedAttributes.push(selectedAtr)
+		console.log('This is selectedAttributes', selectedAttributes)
+	}
+
+	const correctPrice =
+		product.prices.find((priceObj: IPrice) => priceObj.currency === currency) ||
+		product.prices[0]
+
+	const addItemToCart = (item: ICartItem) => {
+		const cartItem: ICartItem = {
+			product: product,
+			amount: 1,
+			selectedAttributes: selectedAttributes,
+		}
+
+		dispatch(addItem(cartItem))
+
+		console.log('This is selectedAttributes', selectedAttributes)
+	}
+
+	return (
+		<>
+			<S.MainContainer>
+				<ImageSection gallery={product.gallery} />
+				<S.ProductInfo>
+					<S.ProductName>{product.name}</S.ProductName>
+					<S.BrandName>{product.brand}</S.BrandName>
+
+					{product.attributes.map((attribute: IAttributeSet) => {
+						return (
+							<Attributes
+								attributeSet={attribute}
+								key={attribute.type}
+								addAttributes={addAttributes}
+							/>
+						)
+					})}
+					<Price symbol={correctPrice.symbol} price={correctPrice.amount.toFixed(2)} />
+					<Button handleClick={addItemToCart} text={'add to cart'} color={'green'} />
+					<S.Description>{product.description}</S.Description>
+				</S.ProductInfo>
+			</S.MainContainer>
+		</>
+	)
 }
 
 export default SingleProductPage
