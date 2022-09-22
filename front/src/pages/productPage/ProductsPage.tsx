@@ -6,85 +6,52 @@ import { IProductCard } from '../../components/cards/ProductCard'
 import { FlexContainer } from '../../components/layout/styles/Containers'
 import { useQuery, gql } from '@apollo/client'
 import { useLocation } from 'react-router-dom'
-
-const allProducts = gql`
-    query {
-        getAllProducts {
-            id
-            name
-            category
-            prices {
-                currency
-                amount
-                symbol
-            }
-            gallery
-        }
-    }
-`
-
-const getProductsFromCategory = (currentCategory: string) => {
-    return gql`
-        query {
-            getProductsByCategory(category: "${currentCategory}") {
-                id
-                name
-                category
-                prices {
-                    currency
-                    amount
-                    symbol
-                }
-                gallery
-            }
-        }
-    `
-}
+import { getProductsFromCategory, allProducts } from '../../queries'
 
 // Decide what query to use
 const choseQuery = (currentCategory: string) => {
-    if (currentCategory === 'All') {
-        return allProducts
-    }
-    return getProductsFromCategory(currentCategory)
+	if (currentCategory === 'All') {
+		return allProducts
+	}
+	return getProductsFromCategory(currentCategory)
 }
 
 const ProductsPage: React.FC<{}> = () => {
-    const { state } = useLocation()
+	const { state } = useLocation()
 
-    let currentCategory: string = 'All'
-    if (typeof state === 'string') {
-        currentCategory = state
-    }
+	let currentCategory: string = 'All'
+	if (typeof state === 'string') {
+		currentCategory = state
+	}
 
-    const query = choseQuery(currentCategory)
+	const query = choseQuery(currentCategory)
 
-    const { data, loading, error } = useQuery(query)
+	const { data, loading, error } = useQuery(query)
 
-    if (loading) {
-        return <div>Loading</div>
-    }
-    if (error) {
-        return <div>Error</div>
-    }
+	if (loading) {
+		return <div>Loading</div>
+	}
+	if (error) {
+		return <div>Error</div>
+	}
 
-    let products
-    if (currentCategory === 'All') {
-        products = data.getAllProducts
-    } else {
-        products = data.getProductsByCategory
-    }
+	let products
+	if (currentCategory === 'All') {
+		products = data.getAllProducts
+	} else {
+		products = data.getProductsByCategory
+	}
 
-    return (
-        <>
-            <FlexContainer>
-                {products.map((item: IProductCard) => {
-                    return <ProductCard {...item} key={item.id} />
-                })}
-            </FlexContainer>
-            <Button text={'Orders'} color={'green'} />
-            <Button text={'White Button'} color={'white'} />
-        </>
-    )
+	return (
+		<>
+			<FlexContainer>
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+			</FlexContainer>
+			<Button text={'Orders'} color={'green'} />
+			<Button text={'White Button'} color={'white'} />
+		</>
+	)
 }
 export default ProductsPage

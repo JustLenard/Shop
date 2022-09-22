@@ -1,67 +1,50 @@
 const Product = require('../models/Product')
 const { addAllPrices } = require('../utils/moneyConveter.js')
 const resolvers = {
-    Query: {
-        getAllProducts: async () => {
-            return await Product.find()
-        },
-        getProduct: async (_parent, { id }, _context, _info) => {
-            return await Product.findById(id)
-        },
+	Query: {
+		getAllProducts: async () => {
+			return await Product.find()
+		},
 
-        getProductsByCategory: async (
-            _parent,
-            { category },
-            context,
-            _info
-        ) => {
-            return await Product.find({ category: category })
-        },
-    },
-    Mutation: {
-        addProduct: async (parent, args, context, info) => {
-            let {
-                name,
-                description,
-                category,
-                prices,
-                attributes,
-                brand,
-                gallery,
-            } = args.product
+		getProduct: async (_parent, { id }, _context, _info) => {
+			return Product.findById(id)
+		},
 
-            prices = addAllPrices(prices)
+		getProductsByCategory: async (_parent, { category }, context, _info) => {
+			return Product.find({ category: category })
+		},
+	},
+	Mutation: {
+		addProduct: async (parent, args, context, info) => {
+			let { name, description, category, prices, attributes, brand, gallery } = args.product
 
-            const product = new Product({
-                name,
-                description,
-                category,
-                prices,
-                attributes,
-                brand,
-                gallery,
-            })
-            await product.save()
+			prices = addAllPrices(prices)
 
-            return product
-        },
+			const product = new Product({
+				name,
+				description,
+				category,
+				prices,
+				attributes,
+				brand,
+				gallery,
+			})
 
-        deleteProduct: async (parent, { id }, context, info) => {
-            await Product.findByIdAndDelete(id)
-            return 'Done'
-        },
+			return product.save()
+		},
 
-        updateProduct: async (parent, args, context, info) => {
-            const { id } = args
-            const { name } = args.product
-            const product = await Product.findByIdAndUpdate(
-                id,
-                { name },
-                { new: true }
-            )
-            return product
-        },
-    },
+		deleteProduct: async (parent, { id }, context, info) => {
+			await Product.findByIdAndDelete(id)
+			return 'Done'
+		},
+
+		updateProduct: async (parent, args, context, info) => {
+			const { id } = args
+			const { name } = args.product
+			const product = await Product.findByIdAndUpdate(id, { name }, { new: true })
+			return product
+		},
+	},
 }
 
 module.exports = { resolvers }
