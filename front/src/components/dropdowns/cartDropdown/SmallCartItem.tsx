@@ -2,20 +2,27 @@ import React from 'react'
 import * as S from './styles/SmallCartItem.styles'
 import animeGirl from '../../../assets/images/animeGirl.jpeg'
 import { XIconSVG } from '../../../assets/icons'
+import { ISmallCartItem } from '../../../types/types'
+import { routes } from '../../../routing/routes'
 
-interface Props {}
-
-const SmallCartItem: React.FC<Props> = () => {
+const SmallCartItem: React.FC<ISmallCartItem> = ({
+	id,
+	name,
+	image,
+	itemsAmount,
+	totalPrice,
+	currencySymbol,
+}) => {
 	return (
 		<S.SmallCartItem>
-			<S.ImageAndName href="#">
+			<S.ImageAndName href={`${routes.singleProductsPage}:${id}`}>
 				<div>
-					<img src={animeGirl} alt="" />
+					<img src={image} alt="product" />
 				</div>
-				<div>This is a anime girl</div>
+				<div>{name}</div>
 			</S.ImageAndName>
-			<S.Amount>2</S.Amount>
-			<S.Price>50$</S.Price>
+			<S.Amount>{itemsAmount}</S.Amount>
+			<S.Price>{`${totalPrice}${currencySymbol}`}</S.Price>
 			<S.XButton>
 				<XIconSVG />
 			</S.XButton>

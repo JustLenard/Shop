@@ -46,6 +46,13 @@ export interface ICartItem {
 	product: IProduct
 	selectedAttributes: Array<IAttributeWithSelection>
 	amount: number
-	itemsPrice: string
-	currency: ICurrencyObj
+}
+
+export interface ISmallCartItem {
+	id: string
+	name: string
+	image: string
+	itemsAmount: number
+	totalPrice: number
+	currencySymbol: string
 }

@@ -1,5 +1,5 @@
 import { size } from '../../../utils/breakpoints'
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 
 export const MainContainer = styled.div`
 	padding: 0.5rem;

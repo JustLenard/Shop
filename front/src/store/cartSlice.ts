@@ -5,13 +5,11 @@ import { ICartItem } from '../types/types'
 export interface CartState {
 	cartItems: Array<ICartItem>
 	totalItemsAmount: number
-	totalItemsPrice: number
 }
 
 const initialState: CartState = {
 	cartItems: [],
 	totalItemsAmount: 0,
-	totalItemsPrice: 0,
 }
 
 export const cartSlice = createSlice({

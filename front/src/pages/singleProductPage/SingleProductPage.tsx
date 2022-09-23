@@ -27,13 +27,11 @@ const SingleProductPage: React.FC<Props> = () => {
 	const dispatch = useDispatch()
 
 	const cart = useSelector((state: RootState) => state.cart)
-	console.log('This is cart', cart)
 
 	const objectId = location.pathname.split(':')[1]
 
 	const { data, loading, error } = useQuery(getSingleProduct(objectId))
-	const { currencyObj: currency } = useContext(GlobalContext)
-	console.log('This is currency', currency)
+	const { currencyObj } = useContext(GlobalContext)
 
 	if (loading) {
 		return <div>Loading</div>
@@ -68,7 +66,7 @@ const SingleProductPage: React.FC<Props> = () => {
 	}
 
 	const correctPrice =
-		product.prices.find((priceObj: IPrice) => priceObj.currency === currency.currency) ||
+		product.prices.find((priceObj: IPrice) => priceObj.currency === currencyObj.currency) ||
 		product.prices[0]
 
 	const addItemToCart = (item: ICartItem) => {
@@ -76,9 +74,6 @@ const SingleProductPage: React.FC<Props> = () => {
 			product: product,
 			amount: 1,
 			selectedAttributes: selectedAttributes,
-			// itemsPrice: correctPrice * amount,
-			itemsPrice: correctPrice,
-			currency: currency,
 		}
 
 		dispatch(addItem(cartItem))

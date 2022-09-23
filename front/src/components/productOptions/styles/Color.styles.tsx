@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 export { OptionName, Wrapper, Container } from './Shared.styles'
 
 export const Color = styled.div<{ color: string; highlight: boolean }>`

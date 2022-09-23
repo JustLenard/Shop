@@ -1,4 +1,4 @@
-import styled from 'styled-components/macro'
+import styled from 'styled-components'
 export { OptionName, Container, Wrapper } from './Shared.styles'
 
 export const SizeContainer = styled.div<{ highlight: boolean }>`
