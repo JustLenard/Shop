@@ -13,17 +13,17 @@ const Navbar: React.FC<Props> = () => {
 		<S.NavbarContainer>
 			<S.Section>
 				<S.LinkWrapper>
-					<Link to={routes.productPage} state={'All'}>
+					<Link to={routes.productsPage} state={'All'}>
 						All
 					</Link>
 				</S.LinkWrapper>
 				<S.LinkWrapper>
-					<Link to={routes.productPage} state={'Women'}>
+					<Link to={routes.productsPage} state={'Women'}>
 						Women
 					</Link>
 				</S.LinkWrapper>
 				<S.LinkWrapper>
-					<Link to={routes.productPage} state={'Men'}>
+					<Link to={routes.productsPage} state={'Men'}>
 						Man
 					</Link>
 				</S.LinkWrapper>

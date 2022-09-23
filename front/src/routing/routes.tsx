@@ -3,7 +3,7 @@ import CartPage from '../pages/cartPage/cartPage'
 
 export const routes = {
 	singleProductsPage: '/product',
-	productPage: '/',
+	productsPage: '/',
 	cartPage: 'cart',
 }
 
@@ -14,7 +14,7 @@ export const routeElements = [
 		element: <SingleProductPage />,
 	},
 	{
-		path: routes.productPage,
+		path: routes.productsPage,
 		exact: true,
 		element: <ProductsPage />,
 	},

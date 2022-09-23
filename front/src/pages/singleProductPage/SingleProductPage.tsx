@@ -8,7 +8,7 @@ import Attributes from '../../components/productOptions/Attributes'
 import {
 	IAttribute,
 	IAttributeSet,
-	IAttributeSetWithSelection,
+	IAttributeWithSelection,
 	ICartItem,
 	IPrice,
 } from '../../types/types'
@@ -43,12 +43,20 @@ const SingleProductPage: React.FC<Props> = () => {
 
 	const product = data.getProduct
 
-	let selectedAttributes: Array<IAttributeSetWithSelection> = []
+	// Make the first product attributes as the defualt selected value
+	let selectedAttributes: Array<IAttributeWithSelection> = product.attributes.map(
+		(atribSet: IAttributeSet) => {
+			return {
+				selectedAtrib: atribSet.items[0],
+				type: atribSet.type,
+			}
+		}
+	)
 
 	const addAttributes = (attribute: IAttribute, attributeSet: IAttributeSet) => {
-		const selectedAtr: IAttributeSetWithSelection = {
-			...attributeSet,
-			selected: attribute,
+		const selectedAtr: IAttributeWithSelection = {
+			...attribute,
+			type: attributeSet.type,
 		}
 
 		selectedAttributes = selectedAttributes.filter(
@@ -56,7 +64,6 @@ const SingleProductPage: React.FC<Props> = () => {
 		)
 
 		selectedAttributes.push(selectedAtr)
-		console.log('This is selectedAttributes', selectedAttributes)
 	}
 
 	const correctPrice =
@@ -71,8 +78,6 @@ const SingleProductPage: React.FC<Props> = () => {
 		}
 
 		dispatch(addItem(cartItem))
-
-		console.log('This is selectedAttributes', selectedAttributes)
 	}
 
 	return (

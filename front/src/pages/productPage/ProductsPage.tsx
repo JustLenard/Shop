@@ -27,6 +27,7 @@ const ProductsPage: React.FC<{}> = () => {
 	const dispatch = useDispatch()
 
 	let currentCategory: string = 'All'
+	console.log('This is currentCategory', currentCategory)
 	if (typeof state === 'string') {
 		currentCategory = state
 	}

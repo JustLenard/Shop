@@ -7,12 +7,12 @@ export interface IAttribute {
 
 export interface IAttributeSet {
 	name: string
-	type: string
+	type: categories
 	items: Array<IAttribute>
 }
 
-export interface IAttributeSetWithSelection extends IAttributeSet {
-	selected: IAttribute
+export interface IAttributeWithSelection extends IAttribute {
+	type: categories
 }
 
 export interface IAttributeProps {
@@ -39,6 +39,6 @@ export interface IProduct {
 
 export interface ICartItem {
 	product: IProduct
-	selectedAttributes: Array<IAttributeSetWithSelection>
+	selectedAttributes: Array<IAttributeWithSelection>
 	amount: number
 }
