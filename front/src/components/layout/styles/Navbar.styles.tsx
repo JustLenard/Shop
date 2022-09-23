@@ -1,13 +1,20 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const NavbarContainer = styled.nav`
+	background-color: gray;
+`
+
+export const SectionsWrapper = styled.div`
+	margin: 0 auto;
+	width: 90%;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
 
 	padding: 1rem;
-	background-color: gray;
 	height: 5rem;
+
+	/* max-width: 1600px; */
 `
 
 export const Section = styled.div`
@@ -22,27 +29,4 @@ export const LinkWrapper = styled.div`
 		text-decoration: none;
 		color: black;
 	}
-`
-
-export const CartWrapper = styled.div`
-	display: flex;
-	cursor: pointer;
-
-	svg {
-		width: 1.8rem;
-	}
-`
-
-export const ItemsAmount = styled.div`
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: red;
-	width: 1.2rem;
-	height: 1.2rem;
-	border-radius: 50%;
-
-	position: relative;
-	right: 9px;
-	bottom: 5px;
 `

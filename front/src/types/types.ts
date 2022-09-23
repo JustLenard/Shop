@@ -5,6 +5,11 @@ export interface IAttribute {
 	value: string
 }
 
+export interface ICurrencyObj {
+	currency: string
+	symbol: string
+}
+
 export interface IAttributeSet {
 	name: string
 	type: categories
@@ -41,4 +46,6 @@ export interface ICartItem {
 	product: IProduct
 	selectedAttributes: Array<IAttributeWithSelection>
 	amount: number
+	itemsPrice: string
+	currency: ICurrencyObj
 }

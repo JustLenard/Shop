@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components/macro'
 
 export const GlobalStyle = createGlobalStyle`
    *{
@@ -13,7 +13,10 @@ export const GlobalStyle = createGlobalStyle`
    img{
     width: 100%;
     height: 100%;
-
+   }
+   
+   a{
+    text-decoration: none;
    }
 
    #root{
@@ -21,9 +24,17 @@ export const GlobalStyle = createGlobalStyle`
 
 
        --grayBorder: #E5E5E5;
+       --mutedGray: rgb(202, 202, 202);
+       --mutedText: #888888;
+
        --white: #fff;
        --black: #000000;
        --green: #5ECE7B;
+
+       --redButton: #eb3434;
+
+       --hoverBlue: #005eb8;
        
    }
+
 `

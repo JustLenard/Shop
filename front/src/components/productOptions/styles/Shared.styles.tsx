@@ -1,16 +1,16 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const Container = styled.div`
-    margin: 1rem 0;
+	margin: 1rem 0;
 `
 
 export const OptionName = styled.div`
-    text-transform: uppercase;
-    font-weight: bold;
+	text-transform: uppercase;
+	font-weight: bold;
 `
 
 export const Wrapper = styled.div`
-    display: flex;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+	display: flex;
+	gap: 0.5rem;
+	margin-top: 0.5rem;
 `

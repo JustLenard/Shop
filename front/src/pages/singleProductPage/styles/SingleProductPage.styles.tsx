@@ -1,5 +1,5 @@
 import { size } from '../../../utils/breakpoints'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 export { ProductName } from '../../../components/cards/styles/CartItemCard.styles'
 
 export const MainContainer = styled.div`

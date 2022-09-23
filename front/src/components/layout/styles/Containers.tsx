@@ -1,21 +1,21 @@
 import { size } from '../../../utils/breakpoints'
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const MainContainer = styled.div`
-    padding: 0.5rem;
+	padding: 0.5rem;
 
-    @media ${size.md} {
-        padding: 1rem;
-    }
+	@media ${size.md} {
+		padding: 1rem;
+	}
 
-    @media ${size.lg} {
-        padding: 2rem;
-    }
+	@media ${size.lg} {
+		padding: 2rem;
+	}
 `
 
 export const FlexContainer = styled.div`
-    display: flex;
-    flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 
-    gap: 2rem;
+	gap: 2rem;
 `

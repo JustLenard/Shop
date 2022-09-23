@@ -1,36 +1,36 @@
-import styled from 'styled-components'
+import styled from 'styled-components/macro'
 
 export const CardBody = styled.div`
-  width: 300px;
-  height: 300px;
-  background-color: #666565;
-  padding: 1rem;
-  display: flex;
-  flex-direction: column;
-  cursor: pointer;
+	width: 300px;
+	height: 300px;
+	background-color: #666565;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	cursor: pointer;
 
-  :hover {
-    scale: 1.2;
-    /* background-color: red; */
-  }
+	:hover {
+		scale: 1.2;
+		/* background-color: red; */
+	}
 `
 
 export const ImageWrapper = styled.div`
-  width: 100%;
-  height: 80%;
+	width: 100%;
+	height: 80%;
 
-  img {
-    width: 100%;
-    height: 100%;
+	img {
+		width: 100%;
+		height: 100%;
 
-    object-fit: cover;
-  }
+		object-fit: cover;
+	}
 `
 
 export const Title = styled.div`
-  margin-top: 1rem;
+	margin-top: 1rem;
 `
 
 export const Price = styled.div`
-  margin-top: 1rem;
+	margin-top: 1rem;
 `

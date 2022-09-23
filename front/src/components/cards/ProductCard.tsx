@@ -20,13 +20,14 @@ export interface IProductCard {
 
 const ProductCard: React.FC<IProductCard> = ({ gallery, name, id, prices }: IProductCard) => {
 	const navigate = useNavigate()
-	const { currency } = useContext(GlobalContext)
+	const { currencyObj: currency } = useContext(GlobalContext)
 
 	const handleClick = () => {
 		navigate(`${routes.singleProductsPage}:${id}`, { state: id })
 	}
 
-	const correctPrice = prices.find((priceObj) => priceObj.currency === currency) || prices[0]
+	const correctPrice =
+		prices.find((priceObj) => priceObj.currency === currency.currency) || prices[0]
 
 	return (
 		<S.CardBody onClick={handleClick}>

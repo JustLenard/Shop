@@ -1,24 +1,30 @@
 import React, { createContext, useState } from 'react'
+import { ICurrencyObj } from '../../types/types'
 import Navbar from './Navbar'
 import { MainContainer } from './styles/Containers'
 
 interface IContext {
-	currency?: string
-	setCurrency: React.Dispatch<React.SetStateAction<string>>
+	currencyObj: ICurrencyObj
+	setCurrencyObj: React.Dispatch<React.SetStateAction<ICurrencyObj>>
 }
 
 export const GlobalContext = createContext<IContext>({
-	setCurrency: () => {},
+	currencyObj: { currency: 'USD', symbol: '$' },
+	setCurrencyObj: () => {},
 })
 interface Props {
 	children: React.ReactNode
 }
 
 const Layout: React.FC<Props> = (props) => {
-	const [currency, setCurrency] = useState('USD')
+	const [currencyObj, setCurrencyObj] = useState<ICurrencyObj>({
+		currency: 'USD',
+		symbol: '$',
+	})
+
 	const value = {
-		currency: currency,
-		setCurrency: setCurrency,
+		currencyObj: currencyObj,
+		setCurrencyObj: setCurrencyObj,
 	}
 
 	return (
