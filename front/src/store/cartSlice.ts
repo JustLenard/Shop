@@ -17,8 +17,16 @@ export const cartSlice = createSlice({
 	initialState,
 	reducers: {
 		addItem: (state, action: PayloadAction<ICartItem>) => {
-			state.cartItems.push(action.payload)
-			state.totalItemsAmount += 1
+			let item = state.cartItems.find((item) => item.id === action.payload.id)
+
+			// If item with the same id is present, icrease the amount of this items in cart, otherwise create a new product to cart
+			if (item !== undefined) {
+				item.amount += action.payload.amount
+			} else {
+				state.cartItems.push(action.payload)
+			}
+
+			state.totalItemsAmount += action.payload.amount
 		},
 
 		// removeItem: (state) => {

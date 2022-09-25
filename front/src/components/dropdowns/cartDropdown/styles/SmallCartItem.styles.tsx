@@ -8,6 +8,8 @@ export const SmallCartItem = styled.div`
 	padding: 0.5rem 0.2rem;
 	position: relative;
 
+	gap: 0.5rem;
+
 	border-bottom: 1.5px solid var(--grayBorder);
 
 	:hover {

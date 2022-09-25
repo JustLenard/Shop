@@ -26,8 +26,6 @@ const SingleProductPage: React.FC<Props> = () => {
 	const location = useLocation()
 	const dispatch = useDispatch()
 
-	const cart = useSelector((state: RootState) => state.cart)
-
 	const objectId = location.pathname.split(':')[1]
 
 	const { data, loading, error } = useQuery(getSingleProduct(objectId))
@@ -46,7 +44,8 @@ const SingleProductPage: React.FC<Props> = () => {
 	let selectedAttributes: Array<IAttributeWithSelection> = product.attributes.map(
 		(atribSet: IAttributeSet) => {
 			return {
-				selectedAtrib: atribSet.items[0],
+				displayValue: atribSet.items[0].displayValue,
+				value: atribSet.items[0].value,
 				type: atribSet.type,
 			}
 		}
@@ -70,7 +69,17 @@ const SingleProductPage: React.FC<Props> = () => {
 		product.prices[0]
 
 	const addItemToCart = (item: ICartItem) => {
+		// Createa  a unique Id from product Id and selected attributes values
+		const uniquieId =
+			selectedAttributes
+				.map((atrib: IAttributeWithSelection) => {
+					return atrib.value
+				})
+				.sort() // <- important !
+				.join('') + product.id
+
 		const cartItem: ICartItem = {
+			id: uniquieId,
 			product: product,
 			amount: 1,
 			selectedAttributes: selectedAttributes,

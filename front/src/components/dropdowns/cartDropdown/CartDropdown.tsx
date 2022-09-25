@@ -11,6 +11,7 @@ import currency from 'currency.js'
 import * as S from './styles/CartDropdown.styles'
 import { ICartItem, ICurrencyObj, IPrice, ISmallCartItem } from '../../../types/types'
 import { GlobalContext } from '../../layout/Layout'
+import { getCartTotalPrice, getPriceObj } from '../../../utils/prices'
 
 interface Props {}
 
@@ -18,13 +19,6 @@ const CartDropdown: React.FC<Props> = () => {
 	const navigate = useNavigate()
 	const cartItems = useSelector((state: RootState) => state.cart)
 	const { currencyObj } = useContext(GlobalContext)
-
-	const getPriceObj = (cartItem: ICartItem, selectedCurrency: ICurrencyObj) => {
-		return (
-			cartItem.product.prices.find((price) => price.currency === selectedCurrency.currency) ||
-			cartItem.product.prices[0]
-		)
-	}
 
 	const smallCartItems: Array<ISmallCartItem> = cartItems.cartItems.map((item) => {
 		const priceObj = getPriceObj(item, currencyObj)
@@ -34,9 +28,9 @@ const CartDropdown: React.FC<Props> = () => {
 			name: item.product.name,
 			image: item.product.gallery[0],
 			itemsAmount: item.amount,
-			totalPrice: currency(priceObj.amount).multiply(item.amount).value,
-
-			currencySymbol: priceObj.symbol,
+			totalPrice: currency(priceObj.amount, { symbol: currencyObj.symbol })
+				.multiply(item.amount)
+				.format(),
 		}
 
 		return smallCartItem
@@ -48,7 +42,7 @@ const CartDropdown: React.FC<Props> = () => {
 		navigate(routes.cartPage)
 	}
 
-	console.log('This is smallCartItems', smallCartItems)
+	const cartTotal = getCartTotalPrice(cartItems.cartItems, currencyObj)
 
 	return (
 		<S.Wrapper>
@@ -65,8 +59,12 @@ const CartDropdown: React.FC<Props> = () => {
 				{/* <SmallCartItem /> */}
 				<S.TotalCell>
 					<S.BoldText>TOTAL:</S.BoldText>
-					<S.MutedText>{`2 produse`}</S.MutedText>
-					<S.BoldText>{`x amoun`}</S.BoldText>
+					{cartItems.totalItemsAmount === 1 ? (
+						<S.MutedText>{`${cartItems.totalItemsAmount} product`}</S.MutedText>
+					) : (
+						<S.MutedText>{`${cartItems.totalItemsAmount} products`}</S.MutedText>
+					)}
+					<S.BoldText>{cartTotal}</S.BoldText>
 				</S.TotalCell>
 
 				<S.ButtonsCell>

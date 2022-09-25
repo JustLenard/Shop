@@ -5,6 +5,10 @@ export interface IAttribute {
 	value: string
 }
 
+export interface IAttributeWithSelection extends IAttribute {
+	type: categories
+}
+
 export interface ICurrencyObj {
 	currency: string
 	symbol: string
@@ -14,10 +18,6 @@ export interface IAttributeSet {
 	name: string
 	type: categories
 	items: Array<IAttribute>
-}
-
-export interface IAttributeWithSelection extends IAttribute {
-	type: categories
 }
 
 export interface IAttributeProps {
@@ -46,6 +46,7 @@ export interface ICartItem {
 	product: IProduct
 	selectedAttributes: Array<IAttributeWithSelection>
 	amount: number
+	id: string
 }
 
 export interface ISmallCartItem {
@@ -53,6 +54,5 @@ export interface ISmallCartItem {
 	name: string
 	image: string
 	itemsAmount: number
-	totalPrice: number
-	currencySymbol: string
+	totalPrice: string
 }

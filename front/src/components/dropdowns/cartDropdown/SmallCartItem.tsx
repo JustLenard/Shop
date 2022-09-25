@@ -5,14 +5,7 @@ import { XIconSVG } from '../../../assets/icons'
 import { ISmallCartItem } from '../../../types/types'
 import { routes } from '../../../routing/routes'
 
-const SmallCartItem: React.FC<ISmallCartItem> = ({
-	id,
-	name,
-	image,
-	itemsAmount,
-	totalPrice,
-	currencySymbol,
-}) => {
+const SmallCartItem: React.FC<ISmallCartItem> = ({ id, name, image, itemsAmount, totalPrice }) => {
 	return (
 		<S.SmallCartItem>
 			<S.ImageAndName href={`${routes.singleProductsPage}:${id}`}>
@@ -22,7 +15,7 @@ const SmallCartItem: React.FC<ISmallCartItem> = ({
 				<div>{name}</div>
 			</S.ImageAndName>
 			<S.Amount>{itemsAmount}</S.Amount>
-			<S.Price>{`${totalPrice}${currencySymbol}`}</S.Price>
+			<S.Price>{totalPrice}</S.Price>
 			<S.XButton>
 				<XIconSVG />
 			</S.XButton>
