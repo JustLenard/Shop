@@ -22,7 +22,7 @@ export interface IAttributeSet {
 
 export interface IAttributeProps {
 	attributeSet: IAttributeSet
-	addAttributes: (attribute: IAttribute, attributeSet: IAttributeSet) => void
+	addAttributes?: (attribute: IAttribute, attributeSet: IAttributeSet) => void
 }
 
 export interface IPrice {

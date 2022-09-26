@@ -2,11 +2,11 @@ import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
 import { ICartItem } from '../types/types'
 
-export interface CartState {
+export interface ICartState {
 	cartItems: Array<ICartItem>
 }
 
-const initialState: CartState = {
+const initialState: ICartState = {
 	cartItems: [],
 }
 
@@ -23,12 +23,30 @@ export const cartSlice = createSlice({
 			} else {
 				state.cartItems.push(action.payload)
 			}
+
+			sessionStorage.setItem('cartObj', JSON.stringify(state.cartItems))
+
+			const objFromSessionStorage = sessionStorage.getItem('cartObj')
 		},
+
 		removeFromCart: (state, acion: PayloadAction<string>) => {
 			state.cartItems = state.cartItems.filter((cartItem) => cartItem.id !== acion.payload)
 		},
+
 		clearCart: (state) => {
 			state.cartItems = []
+		},
+
+		increaseItemAmount: (state, acion: PayloadAction<string>) => {
+			const product = state.cartItems.find((item) => item.id === acion.payload)
+
+			if (product !== undefined) {
+				product.amount += 1
+			}
+		},
+
+		applyStateFromSessionStorage: (state, action: PayloadAction<ICartState>) => {
+			state = action.payload
 		},
 
 		// removeItem: (state) => {
@@ -43,6 +61,12 @@ export const cartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { addItem, removeFromCart, clearCart } = cartSlice.actions
+export const {
+	applyStateFromSessionStorage,
+	addItem,
+	removeFromCart,
+	clearCart,
+	increaseItemAmount,
+} = cartSlice.actions
 
 export default cartSlice.reducer

@@ -43,8 +43,8 @@ export const Dropdown = styled.div`
 	transform: translateY(-10px);
 
 	opacity: 0;
-	opacity: 1;
-	/* pointer-events: none; */
+	/* opacity: 1; */
+	pointer-events: none;
 	transition: opacity 150ms ease-in-out, transform 150ms ease-in-out;
 
 	position: absolute;
@@ -55,11 +55,11 @@ export const Dropdown = styled.div`
 
 	width: 20rem;
 	background-color: var(--white);
-	border-radius: 0.5rem;
+	border-radius: 0.2rem;
 	box-shadow: 0 2px 9px 0 rgba(0, 0, 0, 0.4);
 `
 
-export const TitleCell = styled.h5`
+export const TitleCell = styled.h4`
 	margin: 0 auto;
 	border-bottom: 1.5px solid var(--grayBorder);
 	text-align: center;
@@ -80,7 +80,12 @@ export const BoldText = styled.div`
 	font-weight: bold;
 `
 
-export const MutedText = styled.div``
+export const EmptyCart = styled.div`
+	text-align: center;
+	padding: 1rem 0;
+	color: var(--mutedText);
+	border-bottom: 1.5px solid var(--grayBorder);
+`
 
 export const ButtonsCell = styled.div`
 	height: fill;

@@ -68,16 +68,20 @@ const CartDropdown: React.FC<Props> = () => {
 			</S.CartIconWrapper>
 			<S.Dropdown>
 				<S.TitleCell>Items in Cart</S.TitleCell>
-				{smallCartItems.map((item, i) => {
-					return <SmallCartItem key={i} {...item} />
-				})}
+				{smallCartItems.length === 0 ? (
+					<S.EmptyCart>There is nothing in your cart...</S.EmptyCart>
+				) : (
+					smallCartItems.map((item) => {
+						return <SmallCartItem key={item.id} {...item} />
+					})
+				)}
 
 				<S.TotalCell>
 					<S.BoldText>TOTAL:</S.BoldText>
 					{itemsInCart === 1 ? (
-						<S.MutedText>{`${itemsInCart} product`}</S.MutedText>
+						<div>{`${itemsInCart} product`}</div>
 					) : (
-						<S.MutedText>{`${itemsInCart} products`}</S.MutedText>
+						<div>{`${itemsInCart} products`}</div>
 					)}
 					<S.BoldText>{cartTotalPrice}</S.BoldText>
 				</S.TotalCell>

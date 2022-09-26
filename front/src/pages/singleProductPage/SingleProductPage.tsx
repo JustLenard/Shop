@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react'
 import * as S from './styles/SingleProductPage.styles'
-import { Price, Size, ColorsSelection } from '../../components/productOptions'
+import { Price } from '../../components/productOptions'
 import { Button } from '../../components/buttons'
 import { useLocation } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
@@ -53,16 +53,6 @@ const SingleProductPage: React.FC<Props> = () => {
 		}
 	)
 
-	// selectedAttributes.sort((a, b) => {
-	// 	if (a.type < b.type) {
-	// 		return -1
-	// 	}
-	// 	if (a.type > b.type) {
-	// 		return 1
-	// 	}
-	// 	return 0
-	// })
-
 	const addAttributes = (attribute: IAttribute, attributeSet: IAttributeSet) => {
 		const selectedAtr: IAttributeWithSelection = {
 			...attribute,
@@ -72,16 +62,6 @@ const SingleProductPage: React.FC<Props> = () => {
 		selectedAttributes = selectedAttributes.filter(
 			(attrib) => attrib.type !== attributeSet.type
 		)
-
-		// selectedAttributes.sort((a, b) => {
-		// 	if (a.type < b.type) {
-		// 		return -1
-		// 	}
-		// 	if (a.type > b.type) {
-		// 		return 1
-		// 	}
-		// 	return 0
-		// })
 
 		selectedAttributes.push(selectedAtr)
 	}

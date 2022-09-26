@@ -11,6 +11,8 @@ export const Container = styled.div`
 	border-bottom: 1px solid var(--grayBorder);
 	border-top: 1px solid var(--grayBorder);
 
+	max-height: 300px;
+
 	@media ${size.sm} {
 		flex-direction: row;
 	}
@@ -28,6 +30,8 @@ export const ProductName = styled.h2`
 
 	padding-bottom: 1rem;
 `
+
+export const BrandName = styled.div``
 
 export const Price = styled.div``
 

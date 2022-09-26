@@ -9,24 +9,28 @@ export const SectionsWrapper = styled.div`
 	width: 90%;
 	display: flex;
 	justify-content: space-between;
-	align-items: center;
 
-	padding: 1rem;
-	height: 5rem;
+	height: 4rem;
 
-	/* max-width: 1600px; */
+	/* border: 1px solid black; */
 `
 
 export const Section = styled.div`
 	display: flex;
 	gap: 1rem;
+
+	/* border: 1px solid blue; */
 `
 
-export const LinkWrapper = styled.div`
-	border: 1px solid red;
+export const Cell = styled.div`
+	min-width: 75px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	/* border-bottom: 3px solid green; */
 
 	a {
-		text-decoration: none;
 		color: black;
 	}
 `

@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useDispatch } from 'react-redux'
 import { Link } from 'react-router-dom'
 import { routes } from '../../routing/routes'
 import { CartDropdown, MoneyDropdown } from '../dropdowns'
@@ -12,26 +13,32 @@ const Navbar: React.FC<Props> = () => {
 		<S.NavbarContainer>
 			<S.SectionsWrapper>
 				<S.Section>
-					<S.LinkWrapper>
+					<S.Cell>
 						<Link to={routes.productsPage} state={'All'}>
 							All
 						</Link>
-					</S.LinkWrapper>
-					<S.LinkWrapper>
+					</S.Cell>
+					<S.Cell>
 						<Link to={routes.productsPage} state={'Women'}>
 							Women
 						</Link>
-					</S.LinkWrapper>
-					<S.LinkWrapper>
+					</S.Cell>
+					<S.Cell>
 						<Link to={routes.productsPage} state={'Men'}>
 							Man
 						</Link>
-					</S.LinkWrapper>
+					</S.Cell>
 				</S.Section>
-				<S.Section>Logo</S.Section>
 				<S.Section>
-					<CartDropdown />
-					<MoneyDropdown />
+					<S.Cell>Logo</S.Cell>
+				</S.Section>
+				<S.Section>
+					<S.Cell>
+						<CartDropdown />
+					</S.Cell>
+					<S.Cell>
+						<MoneyDropdown />
+					</S.Cell>
 				</S.Section>
 			</S.SectionsWrapper>
 		</S.NavbarContainer>

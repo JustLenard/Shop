@@ -10,7 +10,6 @@ import { getProductsFromCategory, allProducts } from '../../queries'
 
 import type { RootState } from '../../store/store'
 import { useSelector, useDispatch } from 'react-redux'
-import { decrement, increment } from '../../store/counterSlice'
 
 // Decide what query to use
 const choseQuery = (currentCategory: string) => {
@@ -23,7 +22,6 @@ const choseQuery = (currentCategory: string) => {
 const ProductsPage: React.FC<{}> = () => {
 	const { state } = useLocation()
 
-	const count = useSelector((state: RootState) => state.counter.value)
 	const dispatch = useDispatch()
 
 	let currentCategory: string = 'All'
@@ -49,17 +47,8 @@ const ProductsPage: React.FC<{}> = () => {
 		products = data.getProductsByCategory
 	}
 
-	console.log('This is count', count)
-
 	return (
 		<>
-			<button aria-label="Increment value" onClick={() => dispatch(increment())}>
-				increment
-			</button>
-
-			<button aria-label="Decrement value" onClick={() => dispatch(decrement())}>
-				Decrement
-			</button>
 			<FlexContainer>
 				{products.map((item: IProductCard) => {
 					return <ProductCard {...item} key={item.id} />

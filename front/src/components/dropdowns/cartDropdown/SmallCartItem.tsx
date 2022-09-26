@@ -1,12 +1,10 @@
 import React from 'react'
 import * as S from './styles/SmallCartItem.styles'
-import animeGirl from '../../../assets/images/animeGirl.jpeg'
 import { XIconSVG } from '../../../assets/icons'
 import { ISmallCartItem } from '../../../types/types'
 import { routes } from '../../../routing/routes'
 import { useDispatch } from 'react-redux'
 import { removeFromCart } from '../../../store/cartSlice'
-import { SingleColor } from '../../productOptions'
 import Attribute from '../../productOptions/singleOption/Attribute'
 
 const SmallCartItem: React.FC<ISmallCartItem> = ({
@@ -23,8 +21,6 @@ const SmallCartItem: React.FC<ISmallCartItem> = ({
 		dispatch(removeFromCart(id))
 	}
 
-	console.log('This is selectedAttributes', selectedAttributes)
-
 	const productRoute = `${routes.singleProductsPage}:${id}`
 	return (
 		<S.SmallCartItem>
@@ -39,7 +35,7 @@ const SmallCartItem: React.FC<ISmallCartItem> = ({
 					})}
 				</S.Attributes>
 			</S.AttributesAndName>
-			<S.Amount>{itemsAmount}</S.Amount>
+			<S.Amount>{`x${itemsAmount}`}</S.Amount>
 			<S.Price>{totalPrice}</S.Price>
 			<S.XButton onClick={removeFromRedux}>
 				<XIconSVG />

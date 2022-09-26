@@ -10,7 +10,9 @@ const ColorsSelection: React.FC<IAttributeProps> = ({ addAttributes, attributeSe
 	const handleClick = (size: IAttribute, index: number) => {
 		setSelected(index)
 
-		addAttributes(size, attributeSet)
+		if (addAttributes !== undefined) {
+			addAttributes(size, attributeSet)
+		}
 	}
 
 	return (
