@@ -11,7 +11,7 @@ interface IPrice {
 	symbol: string
 }
 export interface IProductCard {
-	name?: string
+	name: string
 	gallery?: string[]
 	id: string
 	prices: Array<IPrice>
