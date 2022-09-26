@@ -9,7 +9,10 @@ export const getPriceObj = (cartItem: ICartItem, selectedCurrency: ICurrencyObj)
 	)
 }
 
-export const getCartTotalPrice = (cartItems: Array<ICartItem>, selectedCurrency: ICurrencyObj) => {
+export const getTotalPriceOfCart = (
+	cartItems: Array<ICartItem>,
+	selectedCurrency: ICurrencyObj
+) => {
 	const pricesArr = cartItems.map((item) => {
 		const price = getPriceObj(item, selectedCurrency).amount
 		return currency(price).multiply(item.amount).value

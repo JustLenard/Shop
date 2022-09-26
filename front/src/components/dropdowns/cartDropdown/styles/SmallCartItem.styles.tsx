@@ -52,15 +52,23 @@ export const XButton = styled.button`
 	}
 `
 
-export const ImageAndName = styled.a`
-	display: flex;
-	align-items: center;
-	color: var(--mutedText);
-
+export const ImageWrapper = styled.a`
 	img {
 		height: 100%;
 		width: 70px;
 	}
+`
+
+export const AttributesAndName = styled.a`
+	display: flex;
+	flex-direction: column;
+	color: var(--mutedText);
+`
+
+export const Attributes = styled.div`
+	display: flex;
+	gap: 0.5rem;
+	/* justify-content: space-between; */
 `
 
 export const Amount = styled.div``

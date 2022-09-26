@@ -4,12 +4,10 @@ import { ICartItem } from '../types/types'
 
 export interface CartState {
 	cartItems: Array<ICartItem>
-	totalItemsAmount: number
 }
 
 const initialState: CartState = {
 	cartItems: [],
-	totalItemsAmount: 0,
 }
 
 export const cartSlice = createSlice({
@@ -25,8 +23,12 @@ export const cartSlice = createSlice({
 			} else {
 				state.cartItems.push(action.payload)
 			}
-
-			state.totalItemsAmount += action.payload.amount
+		},
+		removeFromCart: (state, acion: PayloadAction<string>) => {
+			state.cartItems = state.cartItems.filter((cartItem) => cartItem.id !== acion.payload)
+		},
+		clearCart: (state) => {
+			state.cartItems = []
 		},
 
 		// removeItem: (state) => {
@@ -41,10 +43,6 @@ export const cartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const {
-	addItem,
-	// removeItem: decrement,
-	// increaseAmount: incrementByAmount,
-} = cartSlice.actions
+export const { addItem, removeFromCart, clearCart } = cartSlice.actions
 
 export default cartSlice.reducer

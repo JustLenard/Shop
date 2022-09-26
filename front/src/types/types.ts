@@ -55,4 +55,5 @@ export interface ISmallCartItem {
 	image: string
 	itemsAmount: number
 	totalPrice: string
+	selectedAttributes: Array<IAttributeWithSelection>
 }

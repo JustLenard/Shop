@@ -1,25 +1,23 @@
 import React from 'react'
-import { IAttributeSet, IAttribute } from '../../types/types'
-import Color from './Color'
+import { IAttributeSet, IAttribute, IAttributeWithSelection } from '../../types/types'
+import ColorsSelection from './ColorsSelection'
 import Size from './Size'
 
 interface Props {
-    attributeSet: IAttributeSet
-    addAttributes: (attribute: IAttribute, attributeSet: IAttributeSet) => void
+	attributeSet: IAttributeSet
+	addAttributes: (attribute: IAttribute, attributeSet: IAttributeSet) => void
+	selectedAttributes?: Array<IAttributeWithSelection>
 }
 
 const Attributes: React.FC<Props> = ({ addAttributes, attributeSet }) => {
-    const attrTypes = {
-        color: (
-            <Color addAttributes={addAttributes} attributeSet={attributeSet} />
-        ),
-        size: (
-            <Size addAttributes={addAttributes} attributeSet={attributeSet} />
-        ),
-    }
-    const val = attributeSet.type
+	const atribType = attributeSet.type
 
-    return <>{attrTypes[val as keyof typeof attrTypes]}</>
+	const attrTypes = {
+		color: <ColorsSelection addAttributes={addAttributes} attributeSet={attributeSet} />,
+		size: <Size addAttributes={addAttributes} attributeSet={attributeSet} />,
+	}
+
+	return <>{attrTypes[atribType as keyof typeof attrTypes]}</>
 }
 
 export default Attributes

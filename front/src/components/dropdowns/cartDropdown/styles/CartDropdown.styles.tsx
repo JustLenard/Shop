@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
 	}
 `
 
-export const CartWrapper = styled.div`
+export const CartIconWrapper = styled.div`
 	display: flex;
 	cursor: pointer;
 

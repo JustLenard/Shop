@@ -1,6 +1,6 @@
 import React, { useState, createContext, useContext } from 'react'
 import * as S from './styles/SingleProductPage.styles'
-import { Price, Size, Color } from '../../components/productOptions'
+import { Price, Size, ColorsSelection } from '../../components/productOptions'
 import { Button } from '../../components/buttons'
 import { useLocation } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
@@ -11,6 +11,7 @@ import {
 	IAttributeWithSelection,
 	ICartItem,
 	IPrice,
+	IProduct,
 } from '../../types/types'
 import { GlobalContext } from '../../components/layout/Layout'
 import { getSingleProduct } from '../../queries'
@@ -19,6 +20,7 @@ import ImageSection from './ImageSection'
 import type { RootState } from '../../store/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { addItem } from '../../store/cartSlice'
+import { createUniqueCartItemId } from '../../utils/cart'
 
 interface Props {}
 
@@ -51,6 +53,16 @@ const SingleProductPage: React.FC<Props> = () => {
 		}
 	)
 
+	// selectedAttributes.sort((a, b) => {
+	// 	if (a.type < b.type) {
+	// 		return -1
+	// 	}
+	// 	if (a.type > b.type) {
+	// 		return 1
+	// 	}
+	// 	return 0
+	// })
+
 	const addAttributes = (attribute: IAttribute, attributeSet: IAttributeSet) => {
 		const selectedAtr: IAttributeWithSelection = {
 			...attribute,
@@ -61,6 +73,16 @@ const SingleProductPage: React.FC<Props> = () => {
 			(attrib) => attrib.type !== attributeSet.type
 		)
 
+		// selectedAttributes.sort((a, b) => {
+		// 	if (a.type < b.type) {
+		// 		return -1
+		// 	}
+		// 	if (a.type > b.type) {
+		// 		return 1
+		// 	}
+		// 	return 0
+		// })
+
 		selectedAttributes.push(selectedAtr)
 	}
 
@@ -68,18 +90,9 @@ const SingleProductPage: React.FC<Props> = () => {
 		product.prices.find((priceObj: IPrice) => priceObj.currency === currencyObj.currency) ||
 		product.prices[0]
 
-	const addItemToCart = (item: ICartItem) => {
-		// Createa  a unique Id from product Id and selected attributes values
-		const uniquieId =
-			selectedAttributes
-				.map((atrib: IAttributeWithSelection) => {
-					return atrib.value
-				})
-				.sort() // <- important !
-				.join('') + product.id
-
+	const addItemToCart = () => {
 		const cartItem: ICartItem = {
-			id: uniquieId,
+			id: createUniqueCartItemId(selectedAttributes, product),
 			product: product,
 			amount: 1,
 			selectedAttributes: selectedAttributes,
