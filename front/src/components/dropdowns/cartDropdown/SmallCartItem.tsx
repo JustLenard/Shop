@@ -5,7 +5,7 @@ import { ISmallCartItem } from '../../../types/types'
 import { routes } from '../../../routing/routes'
 import { useDispatch } from 'react-redux'
 import { removeFromCart } from '../../../store/cartSlice'
-import Attribute from '../../productOptions/singleOption/Attribute'
+import SingleAttribute from '../../productOptions/singleOption/SingleAttribute'
 
 const SmallCartItem: React.FC<ISmallCartItem> = ({
 	id,
@@ -31,7 +31,7 @@ const SmallCartItem: React.FC<ISmallCartItem> = ({
 				<div>{name}</div>
 				<S.Attributes>
 					{selectedAttributes.map((attribute) => {
-						return <Attribute attribute={attribute} key={attribute.type} />
+						return <SingleAttribute attribute={attribute} key={attribute.type} />
 					})}
 				</S.Attributes>
 			</S.AttributesAndName>

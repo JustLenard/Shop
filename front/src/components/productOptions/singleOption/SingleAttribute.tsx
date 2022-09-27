@@ -7,7 +7,7 @@ interface Props {
 	attribute: IAttributeWithSelection
 }
 
-const Attribute: React.FC<Props> = ({ attribute }) => {
+const SingleAttribute: React.FC<Props> = ({ attribute }) => {
 	const variants = {
 		color: <SingleColor color={attribute.value} />,
 		size: <SingleSize size={attribute.value} />,
@@ -16,4 +16,4 @@ const Attribute: React.FC<Props> = ({ attribute }) => {
 	return <>{variants[attribute.type as keyof typeof variants]}</>
 }
 
-export default Attribute
+export default SingleAttribute

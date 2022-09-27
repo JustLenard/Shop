@@ -46,6 +46,11 @@ export const cartSlice = createSlice({
 
 			if (product !== undefined) {
 				product.amount -= 1
+				if (product.amount === 0) {
+					state.cartItems = state.cartItems.filter(
+						(cartItem) => cartItem.id !== acion.payload
+					)
+				}
 			}
 		},
 	},

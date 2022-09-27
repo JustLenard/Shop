@@ -2,9 +2,9 @@ import React, { useState } from 'react'
 import * as S from './styles/CartItemCard.styles'
 import animeGirl from '../../assets/images/animeGirl.jpeg'
 import { ICartItem } from '../../types/types'
-import Attributes from '../productOptions/Attributes'
 import { useDispatch } from 'react-redux'
 import { decreaseItemAmount, increaseItemAmount } from '../../store/cartSlice'
+import { AttributesCartPage } from '../productOptions'
 
 const CartItemCard: React.FC<ICartItem> = ({ id, selectedAttributes, amount, product }) => {
 	const { brand, name, description, category, gallery, attributes, prices } = product
@@ -19,9 +19,9 @@ const CartItemCard: React.FC<ICartItem> = ({ id, selectedAttributes, amount, pro
 		dispatch(decreaseItemAmount(id))
 	}
 
-	console.log('This is attributes', attributes)
+	// console.log('This is attributes', attributes)
 
-	console.log('This is selectedAttributes', selectedAttributes)
+	// console.log('This is selectedAttributes', selectedAttributes)
 
 	return (
 		<S.Container>
@@ -30,22 +30,9 @@ const CartItemCard: React.FC<ICartItem> = ({ id, selectedAttributes, amount, pro
 				<S.BrandName>{brand}</S.BrandName>
 				{attributes.map((atrib) => {
 					return (
-						<Attributes
-							attributeSet={atrib}
-							key={atrib.type}
-							selectedAttributes={selectedAttributes}
-						/>
+						<AttributesCartPage attributeSet={atrib} cartItemId={id} key={atrib.type} />
 					)
 				})}
-				{/* <S.Price>{price}</S.Price> */}
-				{/* <Size name={'Size'} sizes={[{ size: 'xl' }, { size: 'sm' }]} />
-                <Color
-                    colors={[
-                        { color: 'red' },
-                        { color: 'blue' },
-                        { color: 'green' },
-                    ]}
-                /> */}
 			</S.Content>
 			<S.PlusMinusContainer>
 				<S.PlusMinus onClick={incereaseAmount}>+</S.PlusMinus>

@@ -4,7 +4,7 @@ import { Price } from '../../components/productOptions'
 import { Button } from '../../components/buttons'
 import { useLocation } from 'react-router-dom'
 import { useQuery, gql } from '@apollo/client'
-import Attributes from '../../components/productOptions/Attributes'
+import AttributesProduct from '../../components/productOptions/singlePageAttributes/AttributesProduct'
 import {
 	IAttribute,
 	IAttributeSet,
@@ -91,7 +91,7 @@ const SingleProductPage: React.FC<Props> = () => {
 
 					{product.attributes.map((attribute: IAttributeSet) => {
 						return (
-							<Attributes
+							<AttributesProduct
 								attributeSet={attribute}
 								key={attribute.type}
 								addAttributes={addAttributes}

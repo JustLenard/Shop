@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import * as S from './styles/Color.styles'
-import { IAttributeProps, IAttribute } from '../../types/types'
+import * as S from '../styles/Color.styles'
+import { IProductPageAttributes, IAttribute } from '../../../types/types'
 
-const ColorsSelection: React.FC<IAttributeProps> = ({ addAttributes, attributeSet }) => {
+const ColorsSelection: React.FC<IProductPageAttributes> = ({ addAttributes, attributeSet }) => {
 	const { name, items } = attributeSet
 
 	const [selected, setSelected] = useState(0)
@@ -10,9 +10,7 @@ const ColorsSelection: React.FC<IAttributeProps> = ({ addAttributes, attributeSe
 	const handleClick = (size: IAttribute, index: number) => {
 		setSelected(index)
 
-		if (addAttributes !== undefined) {
-			addAttributes(size, attributeSet)
-		}
+		addAttributes(size, attributeSet)
 	}
 
 	return (

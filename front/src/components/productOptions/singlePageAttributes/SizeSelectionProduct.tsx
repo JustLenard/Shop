@@ -1,8 +1,11 @@
 import React, { useState } from 'react'
-import * as S from './styles/Size.styles'
-import { IAttributeProps, IAttributeSet, IAttribute } from '../../types/types'
+import * as S from '../styles/Size.styles'
+import { IProductPageAttributes, IAttributeSet, IAttribute } from '../../../types/types'
 
-const SizeSelection: React.FC<IAttributeProps> = ({ attributeSet, addAttributes }) => {
+const SizeSelectionProduct: React.FC<IProductPageAttributes> = ({
+	attributeSet,
+	addAttributes,
+}) => {
 	const { name, items } = attributeSet
 
 	const [selected, setSelected] = useState(0)
@@ -10,9 +13,7 @@ const SizeSelection: React.FC<IAttributeProps> = ({ attributeSet, addAttributes 
 	const handleClick = (size: IAttribute, index: number) => {
 		setSelected(index)
 
-		if (addAttributes !== undefined) {
-			addAttributes(size, attributeSet)
-		}
+		addAttributes(size, attributeSet)
 	}
 
 	return (
@@ -34,4 +35,4 @@ const SizeSelection: React.FC<IAttributeProps> = ({ attributeSet, addAttributes 
 	)
 }
 
-export default SizeSelection
+export default SizeSelectionProduct

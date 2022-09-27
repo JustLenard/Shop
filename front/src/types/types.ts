@@ -1,12 +1,14 @@
 export type categories = 'All' | 'Women' | 'Men'
 
+export type attributeTypes = 'color' | 'size'
+
 export interface IAttribute {
 	displayValue: string
 	value: string
 }
 
 export interface IAttributeWithSelection extends IAttribute {
-	type: categories
+	type: attributeTypes
 }
 
 export interface ICurrencyObj {
@@ -16,13 +18,19 @@ export interface ICurrencyObj {
 
 export interface IAttributeSet {
 	name: string
-	type: categories
+	type: attributeTypes
 	items: Array<IAttribute>
 }
 
-export interface IAttributeProps {
+export interface IProductPageAttributes {
 	attributeSet: IAttributeSet
-	addAttributes?: (attribute: IAttribute, attributeSet: IAttributeSet) => void
+	addAttributes: (attribute: IAttribute, attributeSet: IAttributeSet) => void
+}
+
+export interface ICartPageAttributes {
+	attributeSet: IAttributeSet
+	cartItemId: string
+	atribType: attributeTypes
 }
 
 export interface IPrice {
