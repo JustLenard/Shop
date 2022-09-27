@@ -21,6 +21,7 @@ import type { RootState } from '../../store/store'
 import { useSelector, useDispatch } from 'react-redux'
 import { addItem } from '../../store/cartSlice'
 import { createUniqueCartItemId } from '../../utils/cart'
+import { getPriceObj } from '../../utils/prices'
 
 interface Props {}
 

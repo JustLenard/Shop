@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit'
 import type { PayloadAction } from '@reduxjs/toolkit'
-import { ICartItem } from '../types/types'
+import { IAttributeWithSelection, ICartItem } from '../types/types'
 
 export interface ICartState {
 	cartItems: Array<ICartItem>
@@ -41,6 +41,23 @@ export const cartSlice = createSlice({
 			}
 		},
 
+		changeSelectedAttributes: (
+			state,
+			action: PayloadAction<{ newSelection: IAttributeWithSelection; cartItemId: string }>
+		) => {
+			const { cartItemId, newSelection } = action.payload
+
+			const currentProduct = state.cartItems.find((product) => product.id === cartItemId)
+
+			if (currentProduct) {
+				const index = currentProduct.selectedAttributes.findIndex(
+					(elem) => elem.type === newSelection.type
+				)
+
+				currentProduct.selectedAttributes[index] = newSelection
+			}
+		},
+
 		decreaseItemAmount: (state, acion: PayloadAction<string>) => {
 			const product = state.cartItems.find((item) => item.id === acion.payload)
 
@@ -57,7 +74,13 @@ export const cartSlice = createSlice({
 })
 
 // Action creators are generated for each case reducer function
-export const { decreaseItemAmount, addItem, removeFromCart, clearCart, increaseItemAmount } =
-	cartSlice.actions
+export const {
+	changeSelectedAttributes,
+	decreaseItemAmount,
+	addItem,
+	removeFromCart,
+	clearCart,
+	increaseItemAmount,
+} = cartSlice.actions
 
 export default cartSlice.reducer

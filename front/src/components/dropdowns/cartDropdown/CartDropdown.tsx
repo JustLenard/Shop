@@ -9,13 +9,7 @@ import SmallCartItem from './SmallCartItem'
 import currency from 'currency.js'
 
 import * as S from './styles/CartDropdown.styles'
-import {
-	IAttributeWithSelection,
-	ICartItem,
-	ICurrencyObj,
-	IPrice,
-	ISmallCartItem,
-} from '../../../types/types'
+import { ISmallCartItem } from '../../../types/types'
 import { GlobalContext } from '../../layout/Layout'
 import { getTotalPriceOfCart, getPriceObj } from '../../../utils/prices'
 import { getAmountOfItemsInCart } from '../../../utils/cart'
@@ -45,8 +39,6 @@ const CartDropdown: React.FC<Props> = () => {
 
 		return smallCartItem
 	})
-
-	console.log('This is cartItem', cartItemObj)
 
 	const goToCheckout = () => {
 		navigate(routes.cartPage)

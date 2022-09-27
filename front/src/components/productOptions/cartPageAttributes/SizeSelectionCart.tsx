@@ -1,14 +1,43 @@
 import React, { useState } from 'react'
 import * as S from '../styles/Size.styles'
-import { ICartPageAttributes, IAttributeSet, IAttribute } from '../../../types/types'
+import {
+	ICartPageAttributes,
+	IAttributeSet,
+	IAttribute,
+	IAttributeWithSelection,
+} from '../../../types/types'
+import { useDispatch, useSelector } from 'react-redux'
+import { RootState } from '../../../store/store'
+import { changeSelectedAttributes } from '../../../store/cartSlice'
 
-const SizeSelectionCart: React.FC<ICartPageAttributes> = ({ attributeSet, cartItemId }) => {
+const SizeSelectionCart: React.FC<ICartPageAttributes> = ({
+	atribType,
+	attributeSet,
+	cartItemId,
+}) => {
+	const dispatch = useDispatch()
 	const { name, items } = attributeSet
 
-	const [selected, setSelected] = useState(0)
+	const itemsInCart = useSelector((state: RootState) => state.cart.cartItems)
+	const currentProduct = itemsInCart.find((product) => product.id === cartItemId)
 
-	const handleClick = (size: IAttribute, index: number) => {
+	const selectedAtrib = currentProduct?.selectedAttributes.find(
+		(atrib) => atrib.type === atribType
+	)
+
+	const indexOfSelectedAtrib = items.findIndex((elem) => elem.value === selectedAtrib?.value)
+
+	const [selected, setSelected] = useState(indexOfSelectedAtrib || 0)
+
+	const handleClick = (atrib: IAttribute, index: number) => {
 		setSelected(index)
+
+		const newSelection: IAttributeWithSelection = {
+			...atrib,
+			type: atribType,
+		}
+
+		dispatch(changeSelectedAttributes({ newSelection, cartItemId }))
 	}
 
 	return (
