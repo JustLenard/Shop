@@ -36,8 +36,8 @@ const ColorSelectionCart: React.FC<ICartPageAttributes> = ({
 		dispatch(changeSelectedAttributes({ newSelection, cartItemId }))
 	}
 
-	console.log('This is items', items)
-	console.log('This is selectedColor', selectedAtrib)
+	// console.log('This is items', items)
+	// console.log('This is selectedColor', selectedAtrib)
 	return (
 		<S.Container>
 			<S.OptionName>{name}</S.OptionName>
