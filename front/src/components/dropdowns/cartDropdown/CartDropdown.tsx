@@ -28,6 +28,7 @@ const CartDropdown: React.FC<Props> = () => {
 
 		const smallCartItem: ISmallCartItem = {
 			id: item.id,
+			productId: item.product.id,
 			name: item.product.name,
 			image: item.product.gallery[0],
 			itemsAmount: item.amount,

@@ -18,7 +18,8 @@ export const createUniqueCartItemId = (
 				return atrib.value
 			})
 			.sort() // <- important !
-			.join('') + product.id
+
+			.join('') + `-${product.id}`
 
 	return id
 }

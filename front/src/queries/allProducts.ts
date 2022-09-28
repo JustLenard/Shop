@@ -1,17 +1,18 @@
 import { gql } from '@apollo/client'
 
 export const allProducts = gql`
-    query {
-        getAllProducts {
-            id
-            name
-            category
-            prices {
-                currency
-                amount
-                symbol
-            }
-            gallery
-        }
-    }
+	query {
+		getAllProducts {
+			id
+			name
+			category
+			brand
+			prices {
+				currency
+				amount
+				symbol
+			}
+			gallery
+		}
+	}
 `

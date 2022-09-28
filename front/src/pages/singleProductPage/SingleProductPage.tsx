@@ -89,7 +89,6 @@ const SingleProductPage: React.FC<Props> = () => {
 				<S.ProductInfo>
 					<S.ProductName>{product.name}</S.ProductName>
 					<S.BrandName>{product.brand}</S.BrandName>
-
 					{product.attributes.map((attribute: IAttributeSet) => {
 						return (
 							<AttributesProduct

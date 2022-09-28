@@ -28,8 +28,12 @@ export const GlobalStyle = createGlobalStyle`
        --mutedText: #888888;
 
        --white: #fff;
+       --productCardItem: #e9e6e6;
+
        --black: #000000;
        --green: #5ECE7B;
+       --green2: #53cf53;
+
 
        --redButton: #eb3434;
 

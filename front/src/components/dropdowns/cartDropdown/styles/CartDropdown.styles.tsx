@@ -3,8 +3,6 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
 	position: relative;
 
-	border: 2px solid green;
-
 	:hover {
 		& > :nth-child(2) {
 			display: initial;
@@ -29,7 +27,10 @@ export const ItemsAmountCartOverlay = styled.div`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: red;
+	background-color: var(--green2);
+
+	color: white;
+
 	width: 1.2rem;
 	height: 1.2rem;
 	border-radius: 50%;

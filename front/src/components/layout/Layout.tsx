@@ -1,6 +1,6 @@
 import React, { createContext, useState } from 'react'
 import { ICurrencyObj } from '../../types/types'
-import Navbar from './Navbar'
+import Navbar from '../navbar/Navbar'
 import { MainContainer } from './styles/Containers'
 
 interface IContext {

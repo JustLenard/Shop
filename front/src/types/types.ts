@@ -59,9 +59,24 @@ export interface ICartItem {
 
 export interface ISmallCartItem {
 	id: string
+	productId: string
 	name: string
 	image: string
 	itemsAmount: number
 	totalPrice: string
 	selectedAttributes: Array<IAttributeWithSelection>
+}
+
+export interface IPrice {
+	currency: string
+	amount: number
+	symbol: string
+}
+export interface IProductCard {
+	name: string
+	gallery: string[]
+	id: string
+	prices: Array<IPrice>
+	category: string
+	brand: string
 }

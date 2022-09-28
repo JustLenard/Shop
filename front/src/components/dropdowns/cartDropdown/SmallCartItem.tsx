@@ -9,6 +9,7 @@ import SingleAttribute from '../../productOptions/singleOption/SingleAttribute'
 
 const SmallCartItem: React.FC<ISmallCartItem> = ({
 	id,
+	productId,
 	name,
 	image,
 	itemsAmount,
@@ -21,7 +22,8 @@ const SmallCartItem: React.FC<ISmallCartItem> = ({
 		dispatch(removeFromCart(id))
 	}
 
-	const productRoute = `${routes.singleProductsPage}:${id}`
+	const productRoute = `${routes.singleProductPage(productId)}`
+
 	return (
 		<S.SmallCartItem>
 			<S.ImageWrapper href={productRoute}>

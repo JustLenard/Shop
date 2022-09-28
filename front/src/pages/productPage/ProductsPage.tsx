@@ -1,15 +1,13 @@
 import React, { useState } from 'react'
 import { Button } from '../../components/buttons'
 import { ProductCard } from '../../components/cards'
-import { IProductCard } from '../../components/cards/ProductCard'
 
 import { FlexContainer } from '../../components/layout/styles/Containers'
 import { useQuery, gql } from '@apollo/client'
 import { useLocation } from 'react-router-dom'
 import { getProductsFromCategory, allProducts } from '../../queries'
 
-import type { RootState } from '../../store/store'
-import { useSelector, useDispatch } from 'react-redux'
+import { IProductCard } from '../../types/types'
 
 // Decide what query to use
 const choseQuery = (currentCategory: string) => {
@@ -19,15 +17,10 @@ const choseQuery = (currentCategory: string) => {
 	return getProductsFromCategory(currentCategory)
 }
 
-const ProductsPage: React.FC<{}> = () => {
-	const { state } = useLocation()
+const ProductsPage: React.FC = () => {
+	const location = useLocation()
 
-	const dispatch = useDispatch()
-
-	let currentCategory: string = 'All'
-	if (typeof state === 'string') {
-		currentCategory = state
-	}
+	const currentCategory = location.pathname.split(':')[1]
 
 	const query = choseQuery(currentCategory)
 
@@ -53,9 +46,49 @@ const ProductsPage: React.FC<{}> = () => {
 				{products.map((item: IProductCard) => {
 					return <ProductCard {...item} key={item.id} />
 				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}{' '}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}{' '}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}{' '}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}{' '}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
+				{products.map((item: IProductCard) => {
+					return <ProductCard {...item} key={item.id} />
+				})}
 			</FlexContainer>
-			{/* <Button text={'Orders'} color={'green'} />
- 			<Button text={'White Button'} color={'white'} /> */}
 		</>
 	)
 }

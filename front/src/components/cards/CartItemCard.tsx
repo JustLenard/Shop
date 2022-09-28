@@ -1,6 +1,5 @@
 import React, { useState } from 'react'
 import * as S from './styles/CartItemCard.styles'
-import animeGirl from '../../assets/images/animeGirl.jpeg'
 import { ICartItem } from '../../types/types'
 import { useDispatch } from 'react-redux'
 import { decreaseItemAmount, increaseItemAmount } from '../../store/cartSlice'
@@ -19,10 +18,6 @@ const CartItemCard: React.FC<ICartItem> = ({ id, selectedAttributes, amount, pro
 		dispatch(decreaseItemAmount(id))
 	}
 
-	// console.log('This is attributes', attributes)
-
-	// console.log('This is selectedAttributes', selectedAttributes)
-
 	return (
 		<S.Container>
 			<S.Content>
@@ -40,7 +35,7 @@ const CartItemCard: React.FC<ICartItem> = ({ id, selectedAttributes, amount, pro
 				<S.PlusMinus onClick={decreaseAmount}>-</S.PlusMinus>
 			</S.PlusMinusContainer>
 			<S.ImageWrapper>
-				<img src={gallery[0] || animeGirl} alt={'product'} />
+				<img src={gallery[0]} alt={'product'} />
 			</S.ImageWrapper>
 		</S.Container>
 	)
