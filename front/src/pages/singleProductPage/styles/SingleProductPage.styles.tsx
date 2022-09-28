@@ -10,15 +10,18 @@ export const MainContainer = styled.div`
 
 export const ImagesContainer = styled.div`
 	border: 2px solid red;
+	/* width: 100%; */
 
-	/* @media ${size.lg} {
-		display: flex;
+	@media ${size.lg} {
+		/* display: flex; */
 		width: 60%;
-	} */
+	}
 `
 
 export const Scroll = styled.div`
 	display: flex;
+
+	width: 100%;
 `
 
 export const SvgWrapper = styled.div`
@@ -43,7 +46,7 @@ export const SvgWrapper = styled.div`
 export const SmallImages = styled.div`
 	display: flex;
 
-	width: 400px;
+	/* width: 400px; */
 	gap: 1rem;
 
 	border: 2px solid red;

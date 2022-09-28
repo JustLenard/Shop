@@ -15,7 +15,10 @@ export const MainContainer = styled.div`
 
 export const FlexContainer = styled.div`
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
-
+	/* display: grid; */
+	/* grid-template-columns: repeat(1fr, auto); */
+	/* grid-template-columns: minmax(100px, 1fr); */
 	gap: 2rem;
 `

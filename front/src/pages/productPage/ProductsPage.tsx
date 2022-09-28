@@ -41,55 +41,53 @@ const ProductsPage: React.FC = () => {
 	}
 
 	return (
-		<>
-			<FlexContainer>
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}{' '}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}{' '}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}{' '}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}{' '}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-				{products.map((item: IProductCard) => {
-					return <ProductCard {...item} key={item.id} />
-				})}
-			</FlexContainer>
-		</>
+		<FlexContainer>
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}{' '}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}{' '}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}{' '}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}{' '}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+			{products.map((item: IProductCard) => {
+				return <ProductCard {...item} key={item.id} />
+			})}
+		</FlexContainer>
 	)
 }
 export default ProductsPage

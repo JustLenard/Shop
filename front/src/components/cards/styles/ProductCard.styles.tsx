@@ -27,10 +27,11 @@ export const MiniCart = styled.div`
 
 export const CardBody = styled.div`
 	width: 300px;
+	/* width: 100%; */
 	height: 400px;
 	background-color: var(--productCardItem);
 	padding: 1rem;
-	display: flex;
+	display: inline-flex;
 	flex-direction: column;
 	cursor: pointer;
 
