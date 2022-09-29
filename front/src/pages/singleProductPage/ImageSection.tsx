@@ -13,9 +13,6 @@ const ImageSection: React.FC<Props> = ({ gallery }) => {
 		setFocusedImage(imageLink)
 	}
 
-	// Delete this later
-	const newGallery = [...gallery, ...gallery, ...gallery]
-
 	const scrollRight = () => {
 		const slider = document.getElementById('scroll')
 
@@ -43,7 +40,7 @@ const ImageSection: React.FC<Props> = ({ gallery }) => {
 						<ChevronLeftSVG />
 					</S.SvgWrapper>
 					<S.SmallImages id="scroll">
-						{newGallery.map((imageLink: string, i: number) => {
+						{gallery.map((imageLink: string, i: number) => {
 							return (
 								<S.SmallImage
 									src={imageLink}

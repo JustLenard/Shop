@@ -4,16 +4,31 @@ export { ProductName } from '../../../components/cards/styles/CartItemCard.style
 
 export const ImagesContainer = styled.div`
 	overflow: hidden;
+
+	border: 2px solid red;
+	/* 
+	@media ${size.md} {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	} */
 `
 
 export const Scroll = styled.div`
 	display: flex;
+
+	background-color: green;
+
+	justify-content: center;
+
+	border: 2px solid blue;
 `
 
 export const SvgWrapper = styled.div`
 	display: flex;
 	align-items: center;
 	cursor: pointer;
+	background: transparent;
 
 	svg {
 		transition: all 150ms ease-in;
@@ -36,6 +51,8 @@ export const SmallImages = styled.div`
 
 	overflow-x: hidden;
 	scroll-behavior: smooth;
+
+	border: 2px solid green;
 `
 
 export const SmallImage = styled.img<{ highlight: boolean }>`
@@ -57,6 +74,8 @@ export const BigImageWrapper = styled.div`
 	max-height: 600px;
 
 	margin: 1rem auto;
+
+	border: 2px solid green;
 
 	img {
 		width: 100%;
