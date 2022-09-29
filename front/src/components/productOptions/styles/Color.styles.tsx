@@ -8,8 +8,10 @@ export const Color = styled.div<{ color: string; highlight: boolean }>`
 	cursor: pointer;
 	transition: 0.3s linear;
 
-	border: ${({ highlight }) => (highlight ? '3px solid red' : '3px solid white')};
-	scale: ${({ highlight }) => (highlight ? '1.1' : '1')};
+	box-shadow: ${({ highlight }) =>
+		highlight ? '0 2px 3px 0 rgba(0, 0, 0, 0.4); ' : '3px solid white'};
+
+	scale: ${({ highlight }) => (highlight ? '1.3' : '1')};
 
 	border-radius: 3px;
 `

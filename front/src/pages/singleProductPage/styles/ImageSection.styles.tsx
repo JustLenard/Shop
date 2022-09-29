@@ -36,13 +36,20 @@ export const SmallImages = styled.div`
 
 	overflow-x: hidden;
 	scroll-behavior: smooth;
+`
 
-	img {
-		cursor: pointer;
-		object-fit: contain;
-		width: 150px;
-		height: 150px;
-	}
+export const SmallImage = styled.img<{ highlight: boolean }>`
+	transition: all 150ms ease-in;
+
+	border: ${({ highlight }) => (highlight ? '2px solid red' : '2px solid white')};
+	border-radius: 5px;
+	box-shadow: ${({ highlight }) =>
+		highlight ? '-1px -1px 11px 2px rgba(255,0,0,0.75);' : 'none'};
+
+	cursor: pointer;
+	object-fit: contain;
+	width: 150px;
+	height: 150px;
 `
 
 export const BigImageWrapper = styled.div`

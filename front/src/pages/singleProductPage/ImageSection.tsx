@@ -9,7 +9,7 @@ interface Props {
 const ImageSection: React.FC<Props> = ({ gallery }) => {
 	const [focusedImage, setFocusedImage] = useState('')
 
-	const handleHover = (imageLink: string) => {
+	const setBigPicture = (imageLink: string) => {
 		setFocusedImage(imageLink)
 	}
 
@@ -45,12 +45,13 @@ const ImageSection: React.FC<Props> = ({ gallery }) => {
 					<S.SmallImages id="scroll">
 						{newGallery.map((imageLink: string, i: number) => {
 							return (
-								<img
+								<S.SmallImage
 									src={imageLink}
 									alt="product"
-									// key={imageLink}
 									key={i}
-									onMouseOver={() => handleHover(imageLink)}
+									onMouseOver={() => setBigPicture(imageLink)}
+									onClick={() => setBigPicture(imageLink)}
+									highlight={imageLink === focusedImage}
 								/>
 							)
 						})}

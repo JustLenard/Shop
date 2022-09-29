@@ -13,4 +13,5 @@ export const SizeContainer = styled.div<{ highlight: boolean }>`
 	scale: ${({ highlight }) => (highlight ? '1.2' : '1')};
 
 	color: ${({ highlight }) => (highlight ? 'var(--white)' : 'var(--black)')};
+	box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.4);
 `

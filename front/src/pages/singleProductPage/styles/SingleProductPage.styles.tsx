@@ -18,10 +18,13 @@ export const ProductInfo = styled.div`
 
 export const BrandName = styled.h4``
 
-export const Flex = styled.div`
-	display: flex;
-`
-
 export const Description = styled.p`
 	margin-top: 1rem;
+`
+export const AmountWrapper = styled.div``
+
+export const FlexContainer = styled.div`
+	display: flex;
+	align-items: center;
+	gap: 3rem;
 `

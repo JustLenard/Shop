@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import * as S from './styles/SingleProductPage.styles'
 import { Price } from '../../components/productOptions'
 import { Button } from '../../components/buttons'
@@ -27,8 +27,10 @@ interface Props {}
 const SingleProductPage: React.FC<Props> = () => {
 	const location = useLocation()
 	const dispatch = useDispatch()
+	const amountArr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 
-	const [attributes, setAttriubutes] = useState()
+	const [attributes, setAttriubutes] = useState<IAttributeWithSelection[]>([])
+	const [amount, setAmount] = useState(amountArr[0])
 
 	const objectId = location.pathname.split(':')[1]
 
@@ -44,16 +46,19 @@ const SingleProductPage: React.FC<Props> = () => {
 
 	const product: IProduct = data.getProduct
 
-	// Make the first product attributes as the defualt selected value
-	let defaultAttributes: Array<IAttributeWithSelection> = product.attributes.map(
-		(atribSet: IAttributeSet) => {
-			return {
-				displayValue: atribSet.items[0].displayValue,
-				value: atribSet.items[0].value,
-				type: atribSet.type,
+	if (attributes.length === 0) {
+		// Make the first product attributes as the defualt selected value
+		let defaultAttributes: Array<IAttributeWithSelection> = product.attributes.map(
+			(atribSet: IAttributeSet) => {
+				return {
+					displayValue: atribSet.items[0].displayValue,
+					value: atribSet.items[0].value,
+					type: atribSet.type,
+				}
 			}
-		}
-	)
+		)
+		setAttriubutes(defaultAttributes)
+	}
 
 	const addAttributes = (attribute: IAttribute, attributeSet: IAttributeSet) => {
 		const selectedAtr: IAttributeWithSelection = {
@@ -61,22 +66,26 @@ const SingleProductPage: React.FC<Props> = () => {
 			type: attributeSet.type,
 		}
 
-		defaultAttributes = defaultAttributes.filter((attrib) => attrib.type !== attributeSet.type)
+		const filteredArr = attributes.filter((attrib) => attrib.type !== attributeSet.type)
 
-		defaultAttributes.push(selectedAtr)
+		setAttriubutes([...filteredArr, selectedAtr])
 	}
 
 	const correctPrice = getCorrectPrice(product.prices, currencyObj)
 
 	const addItemToCart = () => {
 		const cartItem: ICartItem = {
-			id: createUniqueCartItemId(defaultAttributes, product),
+			id: createUniqueCartItemId(attributes, product),
 			product: product,
-			amount: 1,
-			selectedAttributes: defaultAttributes,
+			amount: amount,
+			selectedAttributes: attributes,
 		}
 
 		dispatch(addItem(cartItem))
+	}
+
+	const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
+		setAmount(parseInt(e.target.value))
 	}
 
 	return (
@@ -96,7 +105,21 @@ const SingleProductPage: React.FC<Props> = () => {
 						)
 					})}
 
-					<Price price={correctPrice} />
+					<S.FlexContainer>
+						<Price price={correctPrice} />
+						<S.AmountWrapper>
+							<span>Amount: </span>
+							<select value={amount} onChange={(e) => handleSelect(e)}>
+								{amountArr.map((numb) => {
+									return (
+										<option value={numb} key={numb}>
+											{numb}
+										</option>
+									)
+								})}
+							</select>
+						</S.AmountWrapper>
+					</S.FlexContainer>
 					<Button handleClick={addItemToCart} text={'add to cart'} color={'green'} />
 
 					<S.Description>{product.description}</S.Description>
