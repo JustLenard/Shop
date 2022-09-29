@@ -18,7 +18,6 @@ export const MiniCart = styled.div`
 	transition: opacity 150ms ease-in-out;
 
 	svg {
-		/* border: 2px solid red; */
 		height: 25px;
 		width: 25px;
 		fill: white;
@@ -26,8 +25,6 @@ export const MiniCart = styled.div`
 `
 
 export const CardBody = styled.div`
-	width: 300px;
-	/* width: 100%; */
 	height: 400px;
 	background-color: var(--productCardItem);
 	padding: 1rem;
@@ -40,8 +37,6 @@ export const CardBody = styled.div`
 	border-radius: 20px;
 
 	box-shadow: -10px 13px 19px -9px rgba(107, 68, 68, 0.75);
-	/* -webkit-box-shadow: -10px 13px 19px -9px rgba(107, 68, 68, 0.75);
-	-moz-box-shadow: -10px 13px 19px -9px rgba(107, 68, 68, 0.75); */
 
 	:hover {
 		transform: scale(1.05);
@@ -61,7 +56,7 @@ export const ImageWrapper = styled.div`
 		width: 100%;
 		height: 100%;
 
-		object-fit: cover;
+		object-fit: contain;
 	}
 `
 
@@ -74,5 +69,6 @@ export const Brand = styled.div`
 `
 
 export const Price = styled.div`
-	margin-top: 1rem;
+	margin-top: 0.7rem;
+	font-size: 1rem;
 `

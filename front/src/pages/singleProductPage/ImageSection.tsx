@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { ChevronLeftSVG, ChevronRightSVG } from '../../assets/icons'
-import * as S from './styles/SingleProductPage.styles'
+import * as S from './styles/ImageSection.styles'
 
 interface Props {
 	gallery: string[]
@@ -35,6 +35,9 @@ const ImageSection: React.FC<Props> = ({ gallery }) => {
 	return (
 		<>
 			<S.ImagesContainer>
+				<S.BigImageWrapper>
+					<img src={focusedImage || gallery[0]} alt="focused product" />
+				</S.BigImageWrapper>
 				<S.Scroll>
 					<S.SvgWrapper onClick={scrollLeft}>
 						<ChevronLeftSVG />
@@ -56,9 +59,6 @@ const ImageSection: React.FC<Props> = ({ gallery }) => {
 						<ChevronRightSVG />
 					</S.SvgWrapper>
 				</S.Scroll>
-				<S.BigImageWrapper>
-					<img src={focusedImage || gallery[0]} alt="focused product" />
-				</S.BigImageWrapper>
 			</S.ImagesContainer>
 		</>
 	)

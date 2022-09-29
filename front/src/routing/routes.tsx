@@ -1,5 +1,6 @@
 import { ProductsPage, SingleProductPage } from '../pages'
 import CartPage from '../pages/cartPage/cartPage'
+import PageNotFound from '../pages/pageNotFound/PageNotFound'
 import { categories } from '../types/types'
 
 const getProductsPageLink = (category?: categories) => {
@@ -13,7 +14,6 @@ const getSingleProductLink = (id?: string) => {
 export const routes = {
 	singleProductPage: (id?: string) => getSingleProductLink(id),
 	productsPage: (category?: categories) => getProductsPageLink(category),
-
 	cartPage: '/cart',
 }
 
@@ -32,5 +32,11 @@ export const routeElements = [
 		path: `${routes.cartPage}`,
 		exact: true,
 		element: <CartPage />,
+	},
+
+	// Page not found
+	{
+		path: `*`,
+		element: <PageNotFound />,
 	},
 ]

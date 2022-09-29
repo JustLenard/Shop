@@ -1,9 +1,9 @@
-import React, { useState, createContext, useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import * as S from './styles/SingleProductPage.styles'
 import { Price } from '../../components/productOptions'
 import { Button } from '../../components/buttons'
 import { useLocation } from 'react-router-dom'
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import AttributesProduct from '../../components/productOptions/singlePageAttributes/AttributesProduct'
 import {
 	IAttribute,
@@ -17,17 +17,18 @@ import { GlobalContext } from '../../components/layout/Layout'
 import { getSingleProduct } from '../../queries'
 import ImageSection from './ImageSection'
 
-import type { RootState } from '../../store/store'
-import { useSelector, useDispatch } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { addItem } from '../../store/cartSlice'
 import { createUniqueCartItemId } from '../../utils/cart'
-import { getPriceObj } from '../../utils/prices'
+import { getCorrectPrice, getPriceObj } from '../../utils/prices'
 
 interface Props {}
 
 const SingleProductPage: React.FC<Props> = () => {
 	const location = useLocation()
 	const dispatch = useDispatch()
+
+	const [attributes, setAttriubutes] = useState()
 
 	const objectId = location.pathname.split(':')[1]
 
@@ -41,10 +42,10 @@ const SingleProductPage: React.FC<Props> = () => {
 		return <div>Error</div>
 	}
 
-	const product = data.getProduct
+	const product: IProduct = data.getProduct
 
 	// Make the first product attributes as the defualt selected value
-	let selectedAttributes: Array<IAttributeWithSelection> = product.attributes.map(
+	let defaultAttributes: Array<IAttributeWithSelection> = product.attributes.map(
 		(atribSet: IAttributeSet) => {
 			return {
 				displayValue: atribSet.items[0].displayValue,
@@ -60,23 +61,19 @@ const SingleProductPage: React.FC<Props> = () => {
 			type: attributeSet.type,
 		}
 
-		selectedAttributes = selectedAttributes.filter(
-			(attrib) => attrib.type !== attributeSet.type
-		)
+		defaultAttributes = defaultAttributes.filter((attrib) => attrib.type !== attributeSet.type)
 
-		selectedAttributes.push(selectedAtr)
+		defaultAttributes.push(selectedAtr)
 	}
 
-	const correctPrice =
-		product.prices.find((priceObj: IPrice) => priceObj.currency === currencyObj.currency) ||
-		product.prices[0]
+	const correctPrice = getCorrectPrice(product.prices, currencyObj)
 
 	const addItemToCart = () => {
 		const cartItem: ICartItem = {
-			id: createUniqueCartItemId(selectedAttributes, product),
+			id: createUniqueCartItemId(defaultAttributes, product),
 			product: product,
 			amount: 1,
-			selectedAttributes: selectedAttributes,
+			selectedAttributes: defaultAttributes,
 		}
 
 		dispatch(addItem(cartItem))
@@ -98,8 +95,10 @@ const SingleProductPage: React.FC<Props> = () => {
 							/>
 						)
 					})}
-					<Price symbol={correctPrice.symbol} price={correctPrice.amount.toFixed(2)} />
+
+					<Price price={correctPrice} />
 					<Button handleClick={addItemToCart} text={'add to cart'} color={'green'} />
+
 					<S.Description>{product.description}</S.Description>
 				</S.ProductInfo>
 			</S.MainContainer>

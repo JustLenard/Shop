@@ -11,8 +11,6 @@ export const Container = styled.div`
 	border-bottom: 1px solid var(--grayBorder);
 	border-top: 1px solid var(--grayBorder);
 
-	max-height: 300px;
-
 	@media ${size.sm} {
 		flex-direction: row;
 	}
@@ -39,7 +37,7 @@ export const PlusMinusContainer = styled.div`
 	display: flex;
 	flex-direction: row;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-around;
 
 	@media ${size.sm} {
 		flex-direction: column;
@@ -57,14 +55,50 @@ export const PlusMinus = styled.div`
 	border: 1px solid black;
 `
 
+export const ChevronWrapper = styled.div`
+	position: absolute;
+	display: flex;
+	gap: 2rem;
+
+	z-index: 2;
+	bottom: 30px;
+
+	button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		background: none;
+		border: none;
+		cursor: pointer;
+		background: #3a3939;
+		padding: 0.2rem;
+		transition: transform 150ms ease-in;
+
+		:hover {
+			transform: scale(1.2);
+		}
+	}
+
+	svg {
+		width: 25px;
+		height: 25px;
+		fill: white;
+	}
+`
+
 export const ImageWrapper = styled.div`
-	flex-grow: 0.2;
+	max-height: 400px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	position: relative;
 
 	img {
-		object-fit: cover;
+		object-fit: contain;
 	}
 
 	@media ${size.sm} {
-		width: 150px;
+		width: 400px;
 	}
 `

@@ -1,12 +1,18 @@
 import currency from 'currency.js'
 import { symbolName } from 'typescript'
-import { ICartItem, ICurrencyObj } from '../types/types'
+import { ICartItem, ICurrencyObj, IPrice, IProduct } from '../types/types'
 
 export const getPriceObj = (cartItem: ICartItem, selectedCurrency: ICurrencyObj) => {
 	return (
 		cartItem.product.prices.find((price) => price.currency === selectedCurrency.currency) ||
 		cartItem.product.prices[0]
 	)
+}
+
+export const getCorrectPrice = (prices: Array<IPrice>, selectedCurrency: ICurrencyObj) => {
+	const priceObj =
+		prices.find((price) => price.currency === selectedCurrency.currency) || prices[0]
+	return currency(priceObj.amount, { symbol: priceObj.symbol }).format()
 }
 
 export const getTotalPriceOfCart = (
