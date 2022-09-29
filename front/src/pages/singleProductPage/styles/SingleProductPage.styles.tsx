@@ -4,7 +4,6 @@ export { ProductName } from '../../../components/cards/styles/CartItemCard.style
 
 export const MainContainer = styled.div`
 	@media ${size.md} {
-		/* display: flex; */
 		display: grid;
 		grid-template-columns: 50% 50%;
 	}
@@ -12,8 +11,6 @@ export const MainContainer = styled.div`
 
 export const ProductInfo = styled.div`
 	padding: 1rem;
-
-	border: 2px solid red;
 
 	@media ${size.md} {
 		border-left: 4px solid var(--grayBorder);
