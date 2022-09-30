@@ -33,7 +33,20 @@ export const getTotalPriceOfCart = (
 	return currency(totalPrice, { symbol: selectedCurrency.symbol }).format()
 }
 
-export const getPriceWithTax = (
+export const getTotalTaxAmount = (
+	price: string,
+	taxPercent: number,
+	selectedCurrency: ICurrencyObj
+) => {
+	const totalPrice = currency(price, { symbol: selectedCurrency.symbol })
+		.multiply(taxPercent)
+		.divide(100)
+		.format()
+
+	return totalPrice
+}
+
+export const getTotalCartPriceWithTax = (
 	price: string,
 	taxPercent: number,
 	selectedCurrency: ICurrencyObj

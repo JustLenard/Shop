@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import * as S from './styles/SingleProductPage.styles'
 import { Price } from '../../components/productOptions'
-import { Button } from '../../components/buttons'
+import { ButtonWithAnimation, Button } from '../../components/buttons'
 import { useLocation } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import AttributesProduct from '../../components/productOptions/singlePageAttributes/AttributesProduct'
@@ -120,7 +120,8 @@ const SingleProductPage: React.FC<Props> = () => {
 							</select>
 						</S.AmountWrapper>
 					</S.FlexContainer>
-					<Button handleClick={addItemToCart} text={'add to cart'} color={'green'} />
+					{/* <Button handleClick={addItemToCart} text={'add to cart'} type={'green'} /> */}
+					<ButtonWithAnimation handleClick={addItemToCart} />
 
 					<S.Description>{product.description}</S.Description>
 				</S.ProductInfo>

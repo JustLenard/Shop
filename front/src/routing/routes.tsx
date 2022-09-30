@@ -1,5 +1,6 @@
 import { ProductsPage, SingleProductPage } from '../pages'
 import CartPage from '../pages/cartPage/cartPage'
+import OrderWasPlaced from '../pages/orderWasPlaced/OrderWasPlaced'
 import PageNotFound from '../pages/pageNotFound/PageNotFound'
 import { categories } from '../types/types'
 
@@ -15,6 +16,7 @@ export const routes = {
 	singleProductPage: (id?: string) => getSingleProductLink(id),
 	productsPage: (category?: categories) => getProductsPageLink(category),
 	cartPage: '/cart',
+	placeOrder: '/place-order',
 }
 
 export const routeElements = [
@@ -32,6 +34,11 @@ export const routeElements = [
 		path: `${routes.cartPage}`,
 		exact: true,
 		element: <CartPage />,
+	},
+	{
+		path: `${routes.placeOrder}`,
+		exact: true,
+		element: <OrderWasPlaced />,
 	},
 
 	// Page not found

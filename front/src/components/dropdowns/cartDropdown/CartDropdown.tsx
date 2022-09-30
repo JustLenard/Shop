@@ -57,7 +57,9 @@ const CartDropdown: React.FC<Props> = () => {
 		<S.Wrapper>
 			<S.CartIconWrapper>
 				<CartSVG />
-				<S.ItemsAmountCartOverlay>{itemsInCart}</S.ItemsAmountCartOverlay>
+				<S.ItemsAmountCartOverlay hide={itemsInCart === 0}>
+					{itemsInCart}
+				</S.ItemsAmountCartOverlay>
 			</S.CartIconWrapper>
 			<S.Dropdown>
 				<S.TitleCell>Items in Cart</S.TitleCell>
@@ -80,8 +82,8 @@ const CartDropdown: React.FC<Props> = () => {
 				</S.TotalCell>
 
 				<S.ButtonsCell>
-					<Button handleClick={goToCheckout} text={'Checkout'} color={'green'} />
-					<Button handleClick={dispatchClearCart} text={'Clear Cart'} color={'red'} />
+					<Button handleClick={goToCheckout} text={'Checkout'} type={'green'} />
+					<Button handleClick={dispatchClearCart} text={'Clear Cart'} type={'red'} />
 				</S.ButtonsCell>
 			</S.Dropdown>
 		</S.Wrapper>

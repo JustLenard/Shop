@@ -1,22 +1,23 @@
 import React from 'react'
 import * as S from './styles/Button.styles'
 
-type colors = 'green' | 'white' | 'red'
+type colors = 'green' | 'white' | 'red' | 'order'
 
 interface Props {
 	text: string
-	color: colors
+	type: colors
 	handleClick?: (arg: any) => void
 }
 
-const Button: React.FC<Props> = ({ handleClick, text, color }) => {
+const Button: React.FC<Props> = ({ handleClick, text, type }) => {
 	const buttonTypes = {
 		green: <S.GreenButton onClick={handleClick}>{text}</S.GreenButton>,
 		white: <S.WhiteButton onClick={handleClick}> {text}</S.WhiteButton>,
 		red: <S.RedButton onClick={handleClick}> {text}</S.RedButton>,
+		order: <S.OrderButton onClick={handleClick}>{text}</S.OrderButton>,
 	}
 
-	return buttonTypes[color]
+	return buttonTypes[type]
 }
 
 export default Button

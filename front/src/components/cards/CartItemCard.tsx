@@ -48,7 +48,7 @@ const CartItemCard: React.FC<ICartItem> = ({ id, selectedAttributes, amount, pro
 						<AttributesCartPage attributeSet={atrib} cartItemId={id} key={atrib.type} />
 					)
 				})}
-				<Price price={correctPrice} />
+				<Price text={'Single product Price:'} price={correctPrice} />
 			</S.Content>
 			<S.PlusMinusContainer>
 				<S.PlusMinus onClick={incereaseAmount}>+</S.PlusMinus>

@@ -23,7 +23,7 @@ export const CartIconWrapper = styled.div`
 	}
 `
 
-export const ItemsAmountCartOverlay = styled.div`
+export const ItemsAmountCartOverlay = styled.div<{ hide: boolean }>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -31,13 +31,17 @@ export const ItemsAmountCartOverlay = styled.div`
 
 	color: white;
 
-	width: 1.2rem;
-	height: 1.2rem;
+	width: 1.4rem;
+	height: 1.4rem;
 	border-radius: 50%;
 
 	position: relative;
 	right: 9px;
 	bottom: 5px;
+
+	transition: all 150ms ease-in;
+
+	opacity: ${({ hide }) => (hide ? 0 : 1)};
 `
 
 export const Dropdown = styled.div`
