@@ -26,6 +26,7 @@ export const MiniCart = styled.div`
 
 export const CardBody = styled.div`
 	height: 400px;
+	max-width: 350px;
 	background-color: var(--productCardItem);
 	padding: 1rem;
 	display: inline-flex;

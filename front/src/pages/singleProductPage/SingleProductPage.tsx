@@ -21,6 +21,7 @@ import { useDispatch } from 'react-redux'
 import { addItem } from '../../store/cartSlice'
 import { createUniqueCartItemId } from '../../utils/cart'
 import { getCorrectPrice, getPriceObj } from '../../utils/prices'
+import { Spinner } from '../../components/spinner'
 
 interface Props {}
 
@@ -38,7 +39,7 @@ const SingleProductPage: React.FC<Props> = () => {
 	const { currencyObj } = useContext(GlobalContext)
 
 	if (loading) {
-		return <div>Loading</div>
+		return <Spinner />
 	}
 	if (error) {
 		return <div>Error</div>
