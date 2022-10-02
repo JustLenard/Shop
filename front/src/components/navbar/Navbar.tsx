@@ -9,17 +9,18 @@ import logo from '../../assets/images/logo.jpeg'
 interface Props {}
 
 const Navbar: React.FC<Props> = () => {
-	const [highlight, useHighlight] = useState('All')
-
+	const [open, setOpen] = useState(false)
 	const location = useLocation()
 	const currentCategory = location.pathname.split(':')[1]
-	// console.log('This is location', location)
-	console.log('This is currentCategory', currentCategory)
+
+	const handleClick = () => {
+		setOpen(!open)
+	}
 
 	return (
 		<S.NavbarContainer>
 			<S.SectionsWrapper>
-				<S.Section>
+				<S.NavLinks open={open}>
 					<S.LinkCell active={currentCategory === 'All'}>
 						<Link to={routes.productsPage('All')}>All</Link>
 					</S.LinkCell>
@@ -31,20 +32,29 @@ const Navbar: React.FC<Props> = () => {
 					<S.LinkCell active={currentCategory === 'Men'}>
 						<Link to={routes.productsPage('Men')}>Men</Link>
 					</S.LinkCell>
-				</S.Section>
-				<S.Section>
-					<S.LogoWrapper>
-						<img src={logo} alt="logo" />
-					</S.LogoWrapper>
-				</S.Section>
-				<S.Section>
+				</S.NavLinks>
+				<S.MobileNav>
 					<S.Cell>
-						<CartDropdown />
+						<S.Hamburger onClick={handleClick}>
+							<div></div>
+							<div></div>
+							<div></div>
+						</S.Hamburger>
 					</S.Cell>
-					<S.Cell>
-						<MoneyDropdown />
-					</S.Cell>
-				</S.Section>
+					<S.Section>
+						<S.LogoWrapper>
+							<img src={logo} alt="logo" />
+						</S.LogoWrapper>
+					</S.Section>
+					<S.Section>
+						<S.Cell>
+							<CartDropdown />
+						</S.Cell>
+						<S.Cell>
+							<MoneyDropdown />
+						</S.Cell>
+					</S.Section>
+				</S.MobileNav>
 			</S.SectionsWrapper>
 		</S.NavbarContainer>
 	)
