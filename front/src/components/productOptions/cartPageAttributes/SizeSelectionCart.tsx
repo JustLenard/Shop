@@ -1,11 +1,6 @@
 import React, { useState } from 'react'
 import * as S from '../styles/Size.styles'
-import {
-	ICartPageAttributes,
-	IAttributeSet,
-	IAttribute,
-	IAttributeWithSelection,
-} from '../../../types/types'
+import { ICartPageAttributes, IAttribute, IAttributeWithSelection } from '../../../types/types'
 import { useDispatch, useSelector } from 'react-redux'
 import { RootState } from '../../../store/store'
 import { changeSelectedAttributes } from '../../../store/cartSlice'

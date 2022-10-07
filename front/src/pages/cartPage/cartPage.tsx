@@ -1,4 +1,3 @@
-import currency from 'currency.js'
 import React, { useContext } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'

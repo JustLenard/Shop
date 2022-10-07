@@ -1,9 +1,7 @@
-import React, { useState } from 'react'
-import { Button } from '../../components/buttons'
 import { ProductCard } from '../../components/cards'
 
 import * as S from './ProductsPage.styles'
-import { useQuery, gql } from '@apollo/client'
+import { useQuery } from '@apollo/client'
 import { useLocation } from 'react-router-dom'
 import { getProductsFromCategory, allProducts } from '../../queries'
 

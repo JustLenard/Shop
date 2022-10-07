@@ -1,4 +1,3 @@
-import { size } from '../../../utils/breakpoints'
 import styled from 'styled-components'
 export { ProductName } from '../../../components/cards/styles/CartItemCard.styles'
 

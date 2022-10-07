@@ -1,10 +1,5 @@
 import React from 'react'
-import {
-	IAttributeSet,
-	IAttribute,
-	IAttributeWithSelection,
-	attributeTypes,
-} from '../../../types/types'
+import { IAttributeSet, attributeTypes } from '../../../types/types'
 import ColorSelectionCart from './ColorSelectionCart'
 import SizeSelectionCart from './SizeSelectionCart'
 

@@ -1,6 +1,5 @@
 import currency from 'currency.js'
-import { symbolName } from 'typescript'
-import { ICartItem, ICurrencyObj, IPrice, IProduct } from '../types/types'
+import { ICartItem, ICurrencyObj, IPrice } from '../types/types'
 
 export const getPriceObj = (cartItem: ICartItem, selectedCurrency: ICurrencyObj) => {
 	return (

@@ -1,7 +1,7 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import * as S from './styles/SingleProductPage.styles'
 import { Price } from '../../components/productOptions'
-import { ButtonWithAnimation, Button } from '../../components/buttons'
+import { ButtonWithAnimation } from '../../components/buttons'
 import { useLocation } from 'react-router-dom'
 import { useQuery } from '@apollo/client'
 import AttributesProduct from '../../components/productOptions/singlePageAttributes/AttributesProduct'
@@ -10,7 +10,6 @@ import {
 	IAttributeSet,
 	IAttributeWithSelection,
 	ICartItem,
-	IPrice,
 	IProduct,
 } from '../../types/types'
 import { GlobalContext } from '../../components/layout/Layout'
@@ -20,7 +19,7 @@ import ImageSection from './ImageSection'
 import { useDispatch } from 'react-redux'
 import { addItem } from '../../store/cartSlice'
 import { createUniqueCartItemId } from '../../utils/cart'
-import { getCorrectPrice, getPriceObj } from '../../utils/prices'
+import { getCorrectPrice } from '../../utils/prices'
 import { Spinner } from '../../components/spinner'
 
 interface Props {}

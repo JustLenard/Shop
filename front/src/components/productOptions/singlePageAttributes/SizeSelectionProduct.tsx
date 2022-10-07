@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import * as S from '../styles/Size.styles'
-import { IProductPageAttributes, IAttributeSet, IAttribute } from '../../../types/types'
+import { IProductPageAttributes, IAttribute } from '../../../types/types'
 
 const SizeSelectionProduct: React.FC<IProductPageAttributes> = ({
 	attributeSet,

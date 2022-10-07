@@ -1,5 +1,4 @@
 import React from 'react'
-import { IAttributeWithSelection } from '../../../types/types'
 import * as S from './styles/SingleColor.styles'
 
 interface Props {
