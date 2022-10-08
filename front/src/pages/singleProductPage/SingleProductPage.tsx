@@ -84,6 +84,7 @@ const SingleProductPage: React.FC<Props> = () => {
 		dispatch(addItem(cartItem))
 	}
 
+	// Select the amount of items to be added to cart
 	const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
 		setAmount(parseInt(e.target.value))
 	}
