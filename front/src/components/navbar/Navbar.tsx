@@ -33,28 +33,29 @@ const Navbar: React.FC<Props> = () => {
 						<Link to={routes.productsPage('Men')}>Men</Link>
 					</S.LinkCell>
 				</S.NavLinks>
-				<S.MobileNav>
+				{/* <S.MobileNav> */}
+				{/* <S.Cell> */}
+				<S.Hamburger onClick={handleClick}>
+					<div></div>
+					<div></div>
+					<div></div>
+				</S.Hamburger>
+				{/* </S.Cell> */}
+
+				<S.Section>
+					<S.LogoWrapper>
+						<img src={logo} alt="logo" />
+					</S.LogoWrapper>
+				</S.Section>
+				<S.Section>
 					<S.Cell>
-						<S.Hamburger onClick={handleClick}>
-							<div></div>
-							<div></div>
-							<div></div>
-						</S.Hamburger>
+						<CartDropdown />
 					</S.Cell>
-					<S.Section>
-						<S.LogoWrapper>
-							<img src={logo} alt="logo" />
-						</S.LogoWrapper>
-					</S.Section>
-					<S.Section>
-						<S.Cell>
-							<CartDropdown />
-						</S.Cell>
-						<S.Cell>
-							<MoneyDropdown />
-						</S.Cell>
-					</S.Section>
-				</S.MobileNav>
+					<S.Cell>
+						<MoneyDropdown />
+					</S.Cell>
+				</S.Section>
+				{/* </S.MobileNav> */}
 			</S.SectionsWrapper>
 		</S.NavbarContainer>
 	)

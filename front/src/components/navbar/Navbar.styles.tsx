@@ -26,12 +26,14 @@ export const SectionsWrapper = styled.div`
 
 export const Section = styled.div`
 	display: flex;
+	flex: 1;
 	gap: 1rem;
+
+	border: 2px solid red;
 `
 
 export const NavLinks = styled.div<{ open: boolean }>`
 	flex: 1;
-	/* display: flex; */
 	display: ${({ open }) => (open ? 'flex' : 'none')};
 
 	gap: 1rem;
@@ -39,7 +41,10 @@ export const NavLinks = styled.div<{ open: boolean }>`
 
 	padding: 1rem 0;
 
+	border: 2px solid red;
+
 	@media ${size.sm} {
+		display: flex;
 		flex-direction: row;
 		padding: 0;
 	}
@@ -55,6 +60,8 @@ export const Cell = styled.div`
 export const LogoWrapper = styled.div`
 	width: 60px;
 	height: 60px;
+
+	margin: 0 auto;
 
 	img {
 		object-fit: cover;
@@ -103,8 +110,10 @@ export const Hamburger = styled.button`
 	}
 `
 
-export const MobileNav = styled.div`
-	flex: 1;
-	display: flex;
-	justify-content: space-around;
-`
+// export const MobileNav = styled.div`
+// 	flex: 1;
+// 	display: flex;
+// 	justify-content: space-between;
+
+// 	border: 2px solid red;
+// `
