@@ -86,34 +86,3 @@ export const LinkCell = styled(Cell)<{ active: boolean }>`
 		padding-bottom: ${(props) => (props.active ? '.3rem' : 'none')};
 	}
 `
-
-export const Hamburger = styled.button`
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	width: 30px;
-	height: 21px;
-	border: none;
-	background: none;
-	cursor: pointer;
-
-	div {
-		display: flex;
-		height: 3px;
-		width: 100%;
-		background: black;
-		border-radius: 10px;
-	}
-
-	@media ${size.sm} {
-		display: none;
-	}
-`
-
-// export const MobileNav = styled.div`
-// 	flex: 1;
-// 	display: flex;
-// 	justify-content: space-between;
-
-// 	border: 2px solid red;
-// `

@@ -5,6 +5,7 @@ import { routes } from '../../routing/routes'
 import { CartDropdown, MoneyDropdown } from '../dropdowns'
 import * as S from './Navbar.styles'
 import logo from '../../assets/images/logo.jpeg'
+import Hamburger from '../buttons/Hamburger'
 
 interface Props {}
 
@@ -35,12 +36,8 @@ const Navbar: React.FC<Props> = () => {
 				</S.NavLinks>
 				{/* <S.MobileNav> */}
 				{/* <S.Cell> */}
-				<S.Hamburger onClick={handleClick}>
-					<div></div>
-					<div></div>
-					<div></div>
-				</S.Hamburger>
 				{/* </S.Cell> */}
+				<Hamburger onClick={handleClick} />
 
 				<S.Section>
 					<S.LogoWrapper>
