@@ -1,5 +1,12 @@
 import styled from 'styled-components'
+import { Cell } from '../../navbar/Navbar.styles'
 import { size } from '../../../utils/breakpoints'
+
+export const HamburgerWrapper = styled(Cell)`
+	@media ${size.sm} {
+		display: none;
+	}
+`
 
 export const Hamburger = styled.button`
 	display: flex;
@@ -17,9 +24,5 @@ export const Hamburger = styled.button`
 		width: 100%;
 		background: black;
 		border-radius: 10px;
-	}
-
-	@media ${size.sm} {
-		display: none;
 	}
 `

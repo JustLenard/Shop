@@ -1,15 +1,18 @@
 import styled from 'styled-components'
+import { size } from '../../../../utils/breakpoints'
 
 export const Wrapper = styled.div`
 	position: relative;
 
-	:hover {
-		& > :nth-child(2) {
-			display: initial;
-			pointer-events: auto;
+	@media ${size.sm} {
+		:hover {
+			& > :nth-child(2) {
+				display: initial;
+				pointer-events: auto;
 
-			transform: translateY(0px);
-			opacity: 1;
+				transform: translateY(0px);
+				opacity: 1;
+			}
 		}
 	}
 `

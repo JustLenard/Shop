@@ -55,7 +55,7 @@ const CartDropdown: React.FC<Props> = () => {
 
 	return (
 		<S.Wrapper>
-			<S.CartIconWrapper>
+			<S.CartIconWrapper onClick={goToCheckout}>
 				<CartSVG />
 				<S.ItemsAmountCartOverlay hide={itemsInCart === 0}>
 					{itemsInCart}

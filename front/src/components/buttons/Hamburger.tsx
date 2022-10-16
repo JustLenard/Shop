@@ -6,11 +6,13 @@ interface Props {
 
 const Hamburger: React.FC<Props> = ({ onClick }) => {
 	return (
-		<S.Hamburger onClick={onClick}>
-			<div></div>
-			<div></div>
-			<div></div>
-		</S.Hamburger>
+		<S.HamburgerWrapper>
+			<S.Hamburger onClick={onClick}>
+				<div></div>
+				<div></div>
+				<div></div>
+			</S.Hamburger>
+		</S.HamburgerWrapper>
 	)
 }
 

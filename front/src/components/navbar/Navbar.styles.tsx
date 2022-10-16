@@ -13,10 +13,10 @@ export const SectionsWrapper = styled.div`
 	margin: 0 auto;
 	width: 90%;
 	display: flex;
+	flex-direction: column-reverse;
 	justify-content: space-between;
 
 	height: auto;
-	flex-direction: column-reverse;
 
 	@media ${size.sm} {
 		flex-direction: row;
@@ -28,8 +28,15 @@ export const Section = styled.div`
 	display: flex;
 	flex: 1;
 	gap: 1rem;
+`
 
-	border: 2px solid red;
+export const RightSection = styled(Section)`
+	justify-content: flex-end;
+`
+
+export const MobileNav = styled.div`
+	flex: 2;
+	display: flex;
 `
 
 export const NavLinks = styled.div<{ open: boolean }>`
@@ -41,8 +48,6 @@ export const NavLinks = styled.div<{ open: boolean }>`
 
 	padding: 1rem 0;
 
-	border: 2px solid red;
-
 	@media ${size.sm} {
 		display: flex;
 		flex-direction: row;
@@ -51,10 +56,14 @@ export const NavLinks = styled.div<{ open: boolean }>`
 `
 
 export const Cell = styled.div`
-	min-width: 75px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	min-width: 50px;
+
+	@media ${size.sm} {
+		min-width: 75px;
+	}
 `
 
 export const LogoWrapper = styled.div`
@@ -62,10 +71,9 @@ export const LogoWrapper = styled.div`
 	height: 60px;
 
 	margin: 0 auto;
-
-	img {
-		object-fit: cover;
-	}
+	display: flex;
+	justify-content: center;
+	align-items: center;
 `
 
 export const LinkCell = styled(Cell)<{ active: boolean }>`
